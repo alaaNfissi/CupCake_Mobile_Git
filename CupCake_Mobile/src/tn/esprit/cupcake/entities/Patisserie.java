@@ -5,11 +5,8 @@
  */
 package tn.esprit.cupcake.entities;
 
-import java.io.File;
-import java.net.MalformedURLException;
-import java.sql.Date;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+
+import java.util.Date;
 
 /**
  *
@@ -27,7 +24,7 @@ public class Patisserie {
     private String description;
     private String image;
     private long Patissier;
-	private ImageView imageV;
+	//private ImageView imageV;
 
     public Patisserie(int id_patisserie, String libelle_patisserie, String adresse_patisserie, Date date_creation, String specialite, String compte_facebook, String compte_instagram, String description, String image, long Patissier) {
         this.id_patisserie = id_patisserie;
@@ -60,7 +57,7 @@ public class Patisserie {
 			p.setImage(rs.getString("image"));
 			listePatisseries.add(p);*/
 
-	public Patisserie(int id_patisserie, String libelle_patisserie, String adresse_patisserie, String specialite, String description, String image,ImageView imageV) throws MalformedURLException {
+	/*public Patisserie(int id_patisserie, String libelle_patisserie, String adresse_patisserie, String specialite, String description, String image,ImageView imageV) throws MalformedURLException {
 		this.id_patisserie = id_patisserie;
 		this.libelle_patisserie = libelle_patisserie;
 		this.adresse_patisserie = adresse_patisserie;
@@ -68,7 +65,7 @@ public class Patisserie {
 		this.description = description;
 		this.image = image;
 		//imageV=getImageV();
-	}
+	}*/
 			
     public Patisserie(String libelle_patisserie,String adresse_patisserie, Date date_creation, String specialite, String compte_facebook, String compte_instagram, String description, String image) {
         this.libelle_patisserie = libelle_patisserie;

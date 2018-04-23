@@ -5,7 +5,7 @@
  */
 package tn.esprit.cupcake.entities;
 
-import java.sql.Date;
+import java.util.Date;
 
 /**
  *
