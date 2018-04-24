@@ -9,6 +9,7 @@ import com.codename1.ui.Toolbar;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
+import tn.esprit.cupcake.gui.LoginGui;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -46,9 +47,8 @@ public class CupCake {
             current.show();
             return;
         }
-        Form hi = new Form("Hi World", BoxLayout.y());
-        hi.add(new Label("Hi World"));
-        hi.show();
+        LoginGui login = new LoginGui();
+		login.getF().show();
     }
 
     public void stop() {

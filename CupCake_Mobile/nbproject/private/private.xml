@@ -4,9 +4,32 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile/src/tn/esprit/cupcake/entities/Evenement.java</file>
-            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile/src/tn/esprit/cupcake/entities/Promotion.java</file>
-            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile/src/tn/esprit/cupcake/entities/Stock.java</file>
+            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/CupCake.java</file>
+            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/entities/ProduitCatalogue.java</file>
+            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/entities/EtatLivraison.java</file>
+            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/gui/test.java</file>
+            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/entities/Catalogue.java</file>
+            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/entities/Patissier.java</file>
+            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/entities/Client.java</file>
+            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/entities/Gender.java</file>
+            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/entities/Utilisateur.java</file>
+            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/entities/Promotion.java</file>
+            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/entities/Panier.java</file>
+            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/entities/Evenement.java</file>
+            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/services/UtilisateurService.java</file>
+            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/entities/TypeRole.java</file>
+            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/entities/EtatCompte.java</file>
+            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/entities/Produit.java</file>
+            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/services/test.java</file>
+            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/entities/Patisserie.java</file>
+            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/entities/ProduitStat.java</file>
+            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/entities/ProduitStatPatisserie.java</file>
+            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/gui/LoginRegisterGui.java</file>
+            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/entities/Commande.java</file>
+            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/entities/Administrateur.java</file>
+            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/build.xml</file>
+            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/entities/Livraison.java</file>
+            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/entities/Stock.java</file>
         </group>
     </open-files>
 </project-private>
