@@ -202,8 +202,7 @@ public class SignUpForm extends com.codename1.ui.Form {
 		if (UtilisateurService.user != null) {
 			//Form FL=new Form(UtilisateurService.user.getUsername());
 			//FL.show();
-			new InboxForm().show();
-		}
+			new TrendingForm().show();		}
 	}
 
 }
