@@ -60,15 +60,16 @@ public class CalendarForm extends BaseForm {
         
         Picker p = new Picker();
         b.addActionListener(e -> {
-            p.pressed(); 
+            p.pressed();
             p.released();
         });
         p.addActionListener(e -> {
             gui_Calendar_1.setCurrentDate(p.getDate());
             gui_Calendar_1.setSelectedDate(p.getDate());
-            gui_Calendar_1.setDate(p.getDate());
+            gui_Calendar_1.setDate(p.getDate());	
         });
         p.setFormatter(new SimpleDateFormat("MMMM"));
+		//SimpleDateFormat p1 =new SimpleDateFormat()
         p.setDate(new Date());
         p.setUIID("CalendarDateTitle");
         Container cnt = BoxLayout.encloseY(
@@ -139,6 +140,9 @@ public class CalendarForm extends BaseForm {
         setName("CalendarForm");
         addComponent(gui_Calendar_1);
         gui_Calendar_1.setName("Calendar_1");
+		gui_Calendar_1.addActionListener((e)->{
+			System.out.println(gui_Calendar_1.getDate());
+		});
     }// </editor-fold>
 
 //-- DON'T EDIT ABOVE THIS LINE!!!

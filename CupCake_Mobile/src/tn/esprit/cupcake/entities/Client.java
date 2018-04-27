@@ -44,5 +44,10 @@ public class Client extends Utilisateur {
 	public void setImage(String image) {
 		this.image = image;
 	}
+
+	@Override
+	public String toString() {
+		return super.toString()+" Client{" + "adresse=" + adresse + ", sexe=" + sexe + ", image=" + image + '}';
+	}
     
 }

@@ -89,16 +89,16 @@ public class UtilisateurService {
 		con.setPost(true);
 		String Url ="http://localhost/CupCake_Web_VF-master/web/app_dev.php/api/registerUser?"; 
 		Url+="un="+u.getUsername();
-		Url+="email="+u.getEmail();
-		Url+="pw="+u.getPassword();
-		Url+="Ntel="+u.getNum_tel();
-		Url+="nom="+u.getNom();
-		Url+="prenom="+u.getPrenom();
-		Url+="dateN="+u.getDate_naissance();
-		Url+="adresse="+u.getAdresse();
-		Url+="sexe="+u.getSexe();
-		Url+="image="+u.getImage();
-		Url+="roles="+u.getRoles();
+		Url+="&email="+u.getEmail();
+		Url+="&pw="+u.getPassword();
+		Url+="&Ntel="+u.getNum_tel();
+		Url+="&nom="+u.getNom();
+		Url+="&prenom="+u.getPrenom();
+		Url+="&dateN="+u.getDate_naissance();
+		Url+="&adresse="+u.getAdresse();
+		Url+="&sexe="+u.getSexe();
+		Url+="&image="+u.getImage();
+		Url+="&roles="+u.getRoles();
 		con.setUrl(Url);
         System.out.println("tt");
         con.addResponseListener((e) -> {
@@ -106,5 +106,6 @@ public class UtilisateurService {
             System.out.println(str);
         });
         NetworkManager.getInstance().addToQueueAndWait(con);
+		user=u;
 	}
 }

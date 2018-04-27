@@ -58,6 +58,7 @@ public class SignInForm extends com.codename1.ui.Form {
     private void guiBuilderBindComponentListeners() {
         EventCallbackClass callback = new EventCallbackClass();
         gui_Button_2.addActionListener(callback);
+		gui_Button_1.addActionListener(callback);
     }
 
     class EventCallbackClass implements com.codename1.ui.events.ActionListener, com.codename1.ui.events.DataChangedListener {
@@ -74,10 +75,15 @@ public class SignInForm extends com.codename1.ui.Form {
             if(sourceComponent.getParent().getLeadParent() != null) {
                 sourceComponent = sourceComponent.getParent().getLeadParent();
             }
-
+			if(sourceComponent == gui_Button_1) {
+				System.out.println("test");
+                onButton_1ActionEvent(ev);
+            }
             if(sourceComponent == gui_Button_2) {
                 onButton_2ActionEvent(ev);
             }
+			
+			
         }
 
         public void dataChanged(int type, int index) {
@@ -131,5 +137,7 @@ public class SignInForm extends com.codename1.ui.Form {
 			}
     }
 	
-
+	public void onButton_1ActionEvent(com.codename1.ui.events.ActionEvent ev) {
+        new SignUpForm().show();
+    }
 }
