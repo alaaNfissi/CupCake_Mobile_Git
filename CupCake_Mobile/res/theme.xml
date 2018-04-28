@@ -57,8 +57,8 @@
             <entry key="Calendar.Thursday" value="Thu" />
             <entry key="ok" value="OK" />
             <entry key="Calendar.Saturday" value="Sat" />
-            <entry key="select" value="Select" />
             <entry key="Calendar.Friday" value="Fri" />
+            <entry key="select" value="Select" />
             <entry key="edit" value="Edit" />
             <entry key="Calendar.Monday" value="Mon" />
             <entry key="cancel" value="Cancel" />
@@ -85,15 +85,15 @@
         <val key="Button.margin" value="1.0,1.0,1.0,1.0" />
         <val key="Button.padUnit" value="2,2,2,2" />
         <val key="Button.padding" value="4.0,4.0,4.0,4.0" />
-        <gradient key="Button.press#bgGradient" color1="13324878" color2="15570254" posX="0.5" posY="0.5" radius="1.0" />
+        <gradient key="Button.press#bgGradient" color1="8134818" color2="11093691" posX="0.5" posY="0.5" radius="1.0" />
         <val key="Button.press#bgType" value="7" />
         <border key="Button.press#border" type="empty" />
         <val key="Button.press#fgColor" value="ffffff" />
         <font key="Button.press#font" type="ttf" face="0" style="0" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.0" />
         <val key="Button.press#marUnit" value="2,2,2,2" />
-        <val key="Button.press#margin" value="1,1,1,1" />
+        <val key="Button.press#margin" value="1.0,1.0,1.0,1.0" />
         <val key="Button.press#padUnit" value="2,2,2,2" />
-        <val key="Button.press#padding" value="4,4,4,4" />
+        <val key="Button.press#padding" value="4.0,4.0,4.0,4.0" />
         <gradient key="Button.sel#bgGradient" color1="14900569" color2="15975582" posX="0.5" posY="0.5" radius="1.0" />
         <val key="Button.sel#bgType" value="7" />
         <border key="Button.sel#border" type="empty" />
@@ -215,13 +215,13 @@
         <border key="FloatingActionButton.border" type="round" roundBorderColor="15643285" opacity="255" strokeColor="0" strokeOpacity="255" strokeThickness="0.0" strokeMM="false" shadowSpread="10" shadowOpacity="110" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="false" />
         <val key="FloatingActionButton.press#align" value="4" />
         <val key="FloatingActionButton.press#bgColor" value="eeb295" />
-        <gradient key="FloatingActionButton.press#bgGradient" color1="16766644" color2="13855849" posX="0.5" posY="0.5" radius="1.0" />
+        <gradient key="FloatingActionButton.press#bgGradient" color1="8134818" color2="11093691" posX="0.5" posY="0.5" radius="1.0" />
         <val key="FloatingActionButton.press#bgType" value="6" />
         <border key="FloatingActionButton.press#border" type="round" roundBorderColor="15643285" opacity="255" strokeColor="0" strokeOpacity="255" strokeThickness="0.0" strokeMM="false" shadowSpread="10" shadowOpacity="110" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="false" />
         <val key="FloatingActionButton.press#transparency" value="0" />
         <val key="FloatingActionButton.sel#align" value="4" />
         <val key="FloatingActionButton.sel#bgColor" value="eeb295" />
-        <gradient key="FloatingActionButton.sel#bgGradient" color1="16766644" color2="13855849" posX="0.5" posY="0.5" radius="1.0" />
+        <gradient key="FloatingActionButton.sel#bgGradient" color1="8134818" color2="11093691" posX="0.5" posY="0.5" radius="1.0" />
         <val key="FloatingActionButton.sel#bgType" value="6" />
         <border key="FloatingActionButton.sel#border" type="round" roundBorderColor="15643285" opacity="255" strokeColor="0" strokeOpacity="255" strokeThickness="0.0" strokeMM="false" shadowSpread="10" shadowOpacity="110" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="false" />
         <val key="FloatingActionButton.sel#transparency" value="0" />

@@ -76,7 +76,7 @@ public class SignInForm extends com.codename1.ui.Form {
                 sourceComponent = sourceComponent.getParent().getLeadParent();
             }
 			if(sourceComponent == gui_Button_1) {
-				System.out.println("test");
+				//System.out.println("test");
                 onButton_1ActionEvent(ev);
             }
             if(sourceComponent == gui_Button_2) {
