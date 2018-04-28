@@ -52,7 +52,7 @@ public class SignUpForm extends com.codename1.ui.Form {
 //-- DON'T EDIT BELOW THIS LINE!!!
 	private Container gui_Container_1 = new com.codename1.ui.Container(new com.codename1.ui.layouts.BoxLayout(com.codename1.ui.layouts.BoxLayout.Y_AXIS));
 	private Container sexe_container = new Container(new BoxLayout(BoxLayout.X_AXIS));
-	private Container roles_container=new Container(new BoxLayout(BoxLayout.X_AXIS));
+	private Container roles_container = new Container(new BoxLayout(BoxLayout.X_AXIS));
 	private Label gui_Label_1 = new com.codename1.ui.Label();
 	private ComponentGroup gui_Component_Group_1 = new com.codename1.ui.ComponentGroup();
 	private TextField username = new TextField();
@@ -60,7 +60,7 @@ public class SignUpForm extends com.codename1.ui.Form {
 	TextField email = new TextField("", "", 20, TextArea.EMAILADDR);
 	private TextField password = new TextField();
 	//private TextField nTel = new TextField();
-	private TextField nTel = new TextField("", "", 20, TextArea.PHONENUMBER); 
+	private TextField nTel = new TextField("", "", 20, TextArea.PHONENUMBER);
 	private TextField nom = new TextField();
 	private TextField prenom = new TextField();
 	private Picker dateNaissance = new Picker();
@@ -75,13 +75,14 @@ public class SignUpForm extends com.codename1.ui.Form {
 	//private 
 	/*--------------- Role -----------------*/
 	private RadioButton client = new RadioButton("Client");
-	private RadioButton patissier=new RadioButton("Patissier");
-	private ButtonGroup rolesGrp=new ButtonGroup();
+	private RadioButton patissier = new RadioButton("Patissier");
+	private ButtonGroup rolesGrp = new ButtonGroup();
 	private TextField roles = new TextField();
 	/*--------------------------------------------*/
 	private Button registerBtn = new Button();
 	private Button backBtn = new Button();
 // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+
 	private void guiBuilderBindComponentListeners() {
 		EventCallbackClass callback = new EventCallbackClass();
 		registerBtn.addActionListener(callback);
@@ -125,11 +126,11 @@ public class SignUpForm extends com.codename1.ui.Form {
 		gui_Container_1.addComponent(gui_Label_1);
 		gui_Container_1.addComponent(gui_Component_Group_1);
 		sexeGrp = new ButtonGroup(sexe_h, sexe_f);
-		rolesGrp=new ButtonGroup(client,patissier);
+		rolesGrp = new ButtonGroup(client, patissier);
 		sexe_container.add(sexe_h).add(sexe_f);
 		roles_container.add(client).add(patissier);
 		//sexe_f.setSelected(true);
-		
+
 		//sexe_container.addComponent(sexe_h);
 		gui_Component_Group_1.setName("Component_Group_1");
 		gui_Component_Group_1.addComponent(username);
@@ -173,7 +174,7 @@ public class SignUpForm extends com.codename1.ui.Form {
 //-- DON'T EDIT ABOVE THIS LINE!!!
 	public void onButton_2ActionEvent(com.codename1.ui.events.ActionEvent ev) {
 		UtilisateurService us = new UtilisateurService();
-		Client c=new Client();
+		Client c = new Client();
 		c.setUsername(username.getText());
 		c.setEmail(email.getText());
 		c.setPassword(password.getText());
@@ -182,27 +183,25 @@ public class SignUpForm extends com.codename1.ui.Form {
 		c.setPrenom(prenom.getText());
 		c.setDate_naissance(dateNaissance.getDate());
 		c.setAdresse(adresse.getText());
-		if (sexeGrp.getSelectedIndex()==0) {
+		if (sexeGrp.getSelectedIndex() == 0) {
 			c.setSexe("homme");
-		}
-		else if (sexeGrp.getSelectedIndex()==1) {
+		} else if (sexeGrp.getSelectedIndex() == 1) {
 			c.setSexe("femme");
 		}
 		c.setImage(image.getText());
 		//c.setRoles(roles);
-		if (rolesGrp.getSelectedIndex()==0) {
+		if (rolesGrp.getSelectedIndex() == 0) {
 			c.setRoles("ROLE_CLIENT");
-		}
-		else if(rolesGrp.getSelectedIndex()==1)
-		{
+		} else if (rolesGrp.getSelectedIndex() == 1) {
 			c.setRoles("ROLE_PATISSIER");
 		}
 		System.out.println(c.toString());
 		us.addUser(c);
-		if (UtilisateurService.user != null) {
-			//Form FL=new Form(UtilisateurService.user.getUsername());
-			//FL.show();
-			new TrendingForm().show();		}
+		if (UtilisateurService.user != null && UtilisateurService.user.getRoles().equals("ROLE_PATISSIER")) {
+			new TrendingForm().show();
+		} else if (UtilisateurService.user != null && UtilisateurService.user.getRoles().equals("ROLE_CLIENT")) {
+			new TrendingForm().show();
+		}
 	}
 
 }
