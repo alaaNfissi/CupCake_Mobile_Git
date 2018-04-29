@@ -10,14 +10,18 @@ import com.codename1.io.ConnectionRequest;
 import com.codename1.io.JSONParser;
 import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
+import com.codename1.l10n.ParseException;
+import com.codename1.l10n.SimpleDateFormat;
 import com.codename1.ui.events.ActionListener;
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+/*import java.text.ParseException;
+import java.text.SimpleDateFormat;*/
 import java.util.ArrayList;
 import java.util.List;
 //import java.util.Locale;
 import java.util.Map;
+/*import java.util.logging.Level;
+import java.util.logging.Logger;*/
 import tn.esprit.cupcake.entities.Commande;
 import tn.esprit.cupcake.entities.Patisserie;
 
@@ -47,10 +51,10 @@ public class CommandeService {
 				c.setId_commande((int) id);
 				c.setNum_commande(Integer.parseInt(obj.get("numCommande").toString().trim()));
 				c.setPrix_totale(Float.parseFloat(obj.get("prixTotale").toString()));
-				/*SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssX",Locale.GERMANY);
+				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 				String date = obj.get("dateCommande").toString();
-				c.setDate_commande(formatter.parse(date));*/
-				c.setDate_commande(null);
+				c.setDate_commande(formatter.parse(date));
+				//c.setDate_commande(null);
 				c.setId_panier(0);
 				c.setLibelle_patisserie(null);
 				//System.out.println();
@@ -59,6 +63,8 @@ public class CommandeService {
 			}
 
 		} catch (IOException ex) {
+		} catch (ParseException ex) {
+			ex.printStackTrace();
 		}
 		System.out.println(listCommandes);
 		return listCommandes;

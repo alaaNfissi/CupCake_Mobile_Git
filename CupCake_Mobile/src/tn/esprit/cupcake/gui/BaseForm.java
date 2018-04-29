@@ -80,8 +80,8 @@ public class BaseForm extends Form {
         // spacer
         getToolbar().addComponentToSideMenu(new Label(" ", "SideCommand"));
         getToolbar().addComponentToSideMenu(new Label(res.getImage("profile_image.png"), "Container"));
-        getToolbar().addComponentToSideMenu(new Label("Detra Mcmunn", "SideCommandNoPad"));
-        getToolbar().addComponentToSideMenu(new Label("Long Beach, CA", "SideCommandSmall"));
+        getToolbar().addComponentToSideMenu(new Label(UtilisateurService.user.getNom()+" "+UtilisateurService.user.getPrenom(), "SideCommandNoPad"));
+        getToolbar().addComponentToSideMenu(new Label(UtilisateurService.user.getUsername(), "SideCommandSmall"));
     }
 
         

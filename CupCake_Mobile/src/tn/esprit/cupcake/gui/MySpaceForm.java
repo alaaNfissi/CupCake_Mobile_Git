@@ -240,6 +240,9 @@ public class MySpaceForm extends BaseForm {
 			gui_Container_3.addComponent(gui_Label_3);
 			gui_Container_3.addComponent(gui_Label_2);
 			gui_Container_3.addComponent(gui_Text_Area_1);
+			/*SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+				String date = obj.get("dateCommande").toString();
+				c.setDate_commande(formatter.parse(date));*/
 			gui_Label_3.setText("Date : "+listCommande.getDate_commande());
 			gui_Label_3.setName("Label_3");
 			gui_Label_2.setText("Prix T : "+listCommande.getPrix_totale());

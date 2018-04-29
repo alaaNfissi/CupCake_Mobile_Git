@@ -28,10 +28,10 @@ import tn.esprit.cupcake.entities.Utilisateur;
  */
 public class UtilisateurService {
 
-	public static Utilisateur user;
+	public static Client user;
 
-	public Utilisateur getListUtilisateur(String json) {
-		Utilisateur u = new Utilisateur();
+	public Client getListUtilisateur(String json) {
+		Client u = new Client();
 		try {
 			System.out.println(json);
 			JSONParser j = new JSONParser();
@@ -59,6 +59,7 @@ public class UtilisateurService {
 			u.setUsername_canonical(utilisateurs.get("usernameCanonical").toString());
 //				u.setConfirmation_token(utilisateurs.get("confirmationToken").toString());
 			u.setPassword_requested_at(null);
+			u.setImage(utilisateurs.get("image").toString());
 			//(Date) utilisateurs.get("passwordRequestedAt")
 			u.setLast_login(null);
 			//(Date) utilisateurs.get("lastLogin")
