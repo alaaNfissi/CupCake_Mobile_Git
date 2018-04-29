@@ -145,7 +145,7 @@ public class CreatePatisserieForm extends com.codename1.ui.Form {
 		//System.out.println(p.getPatissier());
 		System.out.println(p.toString());
 		ps.createPatisserie(p);
-		if (ps.patisserie != null) {
+		if (PatisserieService.patisserie != null) {
 			new TrendingForm().show();
 		}
 	}

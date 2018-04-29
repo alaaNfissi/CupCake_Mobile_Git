@@ -51,7 +51,7 @@ public class UtilisateurService {
 			ArrayList<String> roles = new ArrayList<>();
 			roles = (ArrayList< String>) utilisateurs.get("roles");
 			System.out.println(roles.get(0).toString() + "/" + roles.get(1).toString());
-			u.setRoles(roles.get(0).toString() + "/" + roles.get(1).toString());
+			u.setRoles(roles.get(0).toString() /*+ "/" + roles.get(1).toString()*/);
 			//u.setSalt(utilisateurs.get("salt"));
 			u.setEmail(utilisateurs.get("email").toString());
 			u.setEmail_canonical(utilisateurs.get("emailCanonical").toString());
@@ -101,11 +101,22 @@ public class UtilisateurService {
 		Url+="&roles="+u.getRoles();
 		con.setUrl(Url);
         System.out.println("tt");
-        con.addResponseListener((e) -> {
+        /*con.addResponseListener((e) -> {
+			UtilisateurService us = new UtilisateurService();
             String str = new String(con.getResponseData());
+			user = us.getListUtilisateur(new String(con.getResponseData()));
             System.out.println(str);
-        });
+        });*/
+		con.addResponseListener(new ActionListener<NetworkEvent>() {
+			@Override
+			public void actionPerformed(NetworkEvent evt) {
+				String str = new String(con.getResponseData());
+				UtilisateurService us = new UtilisateurService();
+				UtilisateurService.user = us.getListUtilisateur(str);
+				System.out.println(str);
+			}
+		});
         NetworkManager.getInstance().addToQueueAndWait(con);
-		user=u;
+		System.out.println(user);
 	}
 }
