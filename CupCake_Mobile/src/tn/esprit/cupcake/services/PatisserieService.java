@@ -78,4 +78,21 @@ public class PatisserieService {
         NetworkManager.getInstance().addToQueueAndWait(con);
 			System.out.println(patisserie);
 	}
+		
+		public void getPatisserieUser(Utilisateur u)
+		{
+			ConnectionRequest con = new ConnectionRequest();
+		con.setPost(true);
+		String Url ="http://localhost/CupCake_Web_VF-master/web/app_dev.php/api/getPatisserieUser?id="+u.getId();
+		con.setUrl(Url);
+        System.out.println("tt");
+        con.addResponseListener((e) -> {
+            String str = new String(con.getResponseData());
+			PatisserieService ps=new PatisserieService();
+			PatisserieService.patisserie=ps.getLoggedPatisserie(str);
+            System.out.println(str);
+        });
+        NetworkManager.getInstance().addToQueueAndWait(con);
+			System.out.println(patisserie);
+		}
 }

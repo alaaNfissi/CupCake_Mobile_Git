@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package tn.esprit.cupcake.gui;
 
 import com.codename1.ui.FontImage;
@@ -17,7 +16,7 @@ import tn.esprit.cupcake.entities.Client;
 import tn.esprit.cupcake.services.UtilisateurService;
 
 /**
- * 
+ *
  * @author Alaa
  */
 public class SignUpForm extends com.codename1.ui.Form {

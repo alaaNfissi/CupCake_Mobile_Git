@@ -79,6 +79,10 @@ public class UtilisateurService {
 			public void actionPerformed(NetworkEvent evt) {
 				UtilisateurService us = new UtilisateurService();
 				user = us.getListUtilisateur(new String(con.getResponseData()));
+				if (user.getRoles().equals("ROLE_PATISSIER")) {
+					PatisserieService ps= new PatisserieService();
+					ps.getPatisserieUser(user);
+				}
 			}
 		});
 		NetworkManager.getInstance().addToQueueAndWait(con);

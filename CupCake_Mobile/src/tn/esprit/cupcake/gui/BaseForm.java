@@ -27,6 +27,8 @@ import com.codename1.ui.Label;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.util.Resources;
+import tn.esprit.cupcake.services.PatisserieService;
+import tn.esprit.cupcake.services.UtilisateurService;
 
 /**
  * Utility methods common to forms e.g. for binding the side menu
@@ -59,11 +61,21 @@ public class BaseForm extends Form {
         inboxButton.addActionListener(e -> new InboxForm().show());
         getToolbar().addComponentToSideMenu(inbox);
         
-//        getToolbar().addCommandToSideMenu("Stats", statsImage, e -> new StatsForm(res).show());
+        //getToolbar().addCommandToSideMenu("WalkthruForm", statsImage, e -> new WalkthruForm(res).show());
         getToolbar().addCommandToSideMenu("Calendar", calendarImage, e -> new CalendarForm(res).show());
         getToolbar().addCommandToSideMenu("Map", null, e -> {});
+		if(UtilisateurService.user.getRoles().equals("ROLE_PATISSIER"))
+		{
+			getToolbar().addCommandToSideMenu("My Space",null,e->new MySpaceForm(res).show());
+		}
         getToolbar().addCommandToSideMenu("Trending", trendingImage, e -> new TrendingForm(res).show());
         getToolbar().addCommandToSideMenu("Settings", null, e -> {});
+		getToolbar().addCommandToSideMenu("Sign out", null, e -> {
+			UtilisateurService.user=null;
+			PatisserieService.patisserie=null;
+			new SignInForm(res).show();
+		});
+
         
         // spacer
         getToolbar().addComponentToSideMenu(new Label(" ", "SideCommand"));
