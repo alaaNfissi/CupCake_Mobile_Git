@@ -12,8 +12,11 @@ import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
 import com.codename1.ui.events.ActionListener;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+//import java.util.Locale;
 import java.util.Map;
 import tn.esprit.cupcake.entities.Commande;
 import tn.esprit.cupcake.entities.Patisserie;
@@ -24,7 +27,7 @@ import tn.esprit.cupcake.entities.Patisserie;
  */
 public class CommandeService {
 
-	public ArrayList<Commande> ListCommandesPatisserie(String json) {
+	public ArrayList<Commande> ListCommandesPatisserie(String json){
 		ArrayList<Commande> listCommandes = new ArrayList<>();
 
 		try {
@@ -44,10 +47,13 @@ public class CommandeService {
 				c.setId_commande((int) id);
 				c.setNum_commande(Integer.parseInt(obj.get("numCommande").toString().trim()));
 				c.setPrix_totale(Float.parseFloat(obj.get("prixTotale").toString()));
+				/*SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssX",Locale.GERMANY);
+				String date = obj.get("dateCommande").toString();
+				c.setDate_commande(formatter.parse(date));*/
 				c.setDate_commande(null);
 				c.setId_panier(0);
 				c.setLibelle_patisserie(null);
-				System.out.println();
+				//System.out.println();
 				listCommandes.add(c);
 
 			}
@@ -58,19 +64,19 @@ public class CommandeService {
 		return listCommandes;
 	}
 
-	    ArrayList<Commande> listCommandes = new ArrayList<>();
-    
-    public ArrayList<Commande> getListCommande(Patisserie p){       
-        ConnectionRequest con = new ConnectionRequest();
-        con.setUrl("http://localhost/CupCake_Web_VF-master/web/app_dev.php/api/getCommandesPatisserie?idPatisserie="+p.getId_patisserie());  
-        con.addResponseListener(new ActionListener<NetworkEvent>() {
-            @Override
-            public void actionPerformed(NetworkEvent evt) {
-                CommandeService cs = new CommandeService();
-                listCommandes= cs.ListCommandesPatisserie(new String(con.getResponseData()));
-            }
-        });
-        NetworkManager.getInstance().addToQueueAndWait(con);
-        return listCommandes;
-    }
+	ArrayList<Commande> listCommandes = new ArrayList<>();
+
+	public ArrayList<Commande> getListCommande(Patisserie p) {
+		ConnectionRequest con = new ConnectionRequest();
+		con.setUrl("http://localhost/CupCake_Web_VF-master/web/app_dev.php/api/getCommandesPatisserie?idPatisserie=" + p.getId_patisserie());
+		con.addResponseListener(new ActionListener<NetworkEvent>() {
+			@Override
+			public void actionPerformed(NetworkEvent evt) {
+				CommandeService cs = new CommandeService();
+				listCommandes = cs.ListCommandesPatisserie(new String(con.getResponseData()));
+			}
+		});
+		NetworkManager.getInstance().addToQueueAndWait(con);
+		return listCommandes;
+	}
 }
