@@ -59,6 +59,9 @@ public class SignInForm extends com.codename1.ui.Form {
         EventCallbackClass callback = new EventCallbackClass();
         gui_Button_2.addActionListener(callback);
 		gui_Button_1.addActionListener(callback);
+		gui_Button_3.addActionListener(callback);
+
+		
     }
 
     class EventCallbackClass implements com.codename1.ui.events.ActionListener, com.codename1.ui.events.DataChangedListener {
@@ -82,7 +85,9 @@ public class SignInForm extends com.codename1.ui.Form {
             if(sourceComponent == gui_Button_2) {
                 onButton_2ActionEvent(ev);
             }
-			
+			if(sourceComponent == gui_Button_3) {
+                onButton_3ActionEvent(ev);
+            }
 			
         }
 
@@ -139,5 +144,10 @@ public class SignInForm extends com.codename1.ui.Form {
 	
 	public void onButton_1ActionEvent(com.codename1.ui.events.ActionEvent ev) {
         new SignUpForm().show();
+    }
+	
+	public void onButton_3ActionEvent(com.codename1.ui.events.ActionEvent ev) {
+		System.out.println("test 1");
+        new UserForm().show();
     }
 }

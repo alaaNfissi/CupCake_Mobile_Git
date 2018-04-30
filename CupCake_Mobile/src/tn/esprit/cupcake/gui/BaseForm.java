@@ -81,7 +81,7 @@ public class BaseForm extends Form {
         getToolbar().addComponentToSideMenu(new Label(" ", "SideCommand"));
         getToolbar().addComponentToSideMenu(new Label(res.getImage("profile_image.png"), "Container"));
         getToolbar().addComponentToSideMenu(new Label(UtilisateurService.user.getNom()+" "+UtilisateurService.user.getPrenom(), "SideCommandNoPad"));
-        getToolbar().addComponentToSideMenu(new Label(UtilisateurService.user.getUsername(), "SideCommandSmall"));
+        getToolbar().addComponentToSideMenu(new Label(UtilisateurService.user.getUsername()+" "+UtilisateurService.user.getDate_naissance(), "SideCommandSmall"));
     }
 
         

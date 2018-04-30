@@ -10,6 +10,8 @@ import com.codename1.io.ConnectionRequest;
 import com.codename1.io.JSONParser;
 import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
+import com.codename1.l10n.ParseException;
+import com.codename1.l10n.SimpleDateFormat;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.events.ActionListener;
 import java.io.IOException;
@@ -18,6 +20,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+/*import java.util.logging.Level;
+import java.util.logging.Logger;*/
 import tn.esprit.cupcake.entities.Client;
 import tn.esprit.cupcake.entities.Patissier;
 import tn.esprit.cupcake.entities.Utilisateur;
@@ -46,6 +50,10 @@ public class UtilisateurService {
 			u.setPrenom(utilisateurs.get("prenom").toString());
 			u.setNum_tel(0);
 			//Integer.parseInt(utilisateurs.get("numTel").toString().trim())
+			//SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
+				//String date = utilisateurs.get("dateNaissance").toString();
+				//c.setDate_commande(formatter.parse(date));
+			//u.setDate_naissance(formatter.parse(date));
 			u.setDate_naissance(null);
 			//(Date) utilisateurs.get("dateNaissance")
 			ArrayList<String> roles = new ArrayList<>();
@@ -68,7 +76,9 @@ public class UtilisateurService {
 			System.out.println(u);
 
 		} catch (IOException ex) {
-		}
+		} /*catch (ParseException ex) {
+			ex.printStackTrace();
+		}*/
 		return u;
 	}
 
