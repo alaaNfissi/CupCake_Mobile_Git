@@ -9,6 +9,8 @@ import com.codename1.components.ScaleImageLabel;
 import com.codename1.facebook.FaceBookAccess; 
 import com.codename1.facebook.User; 
 import com.codename1.io.Storage; 
+import com.codename1.l10n.ParseException;
+//import com.codename1.l10n.SimpleDateFormat;
 import com.codename1.social.FacebookConnect; 
 import com.codename1.social.Login; 
 import com.codename1.social.LoginCallback; 
@@ -22,6 +24,15 @@ import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.geom.Dimension; 
 import com.codename1.ui.layouts.BoxLayout; 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+/*import java.util.logging.Level;
+import java.util.logging.Logger;*/
+/*import java.util.logging.Level;
+import java.util.logging.Logger;*/
+import tn.esprit.cupcake.entities.Client;
+import tn.esprit.cupcake.entities.Patisserie;
+import tn.esprit.cupcake.services.PatisserieService;
+import tn.esprit.cupcake.services.UtilisateurService;
  
 /** 
  * GUI builder created Form 
@@ -66,6 +77,7 @@ public class UserForm extends com.codename1.ui.Form {
             showIfNotLoggedIn(form);
         } else { 
             showIfLoggedIn(form);
+		   //new TrendingForm().show();
         } 
     } 
  
@@ -102,17 +114,52 @@ public class UserForm extends com.codename1.ui.Form {
         String token = (String) Storage.getInstance().readObject("token");
         FaceBookAccess.setToken(token);
             final User me = new User();
+			Client c = new Client();
             try {
-				String fields="name,first_name,last_name,age_range,birthday,email,gender,address";
+				String fields="name,first_name,last_name,age_range,birthday,email,gender,address,location";
                 FaceBookAccess.getInstance().getUser("me?fields="+fields, me, new ActionListener() {
                     @Override 
                     public void actionPerformed(ActionEvent evt) {
                         String miNombre = me.getName(); 
+						c.setUsername(me.getName());
+						c.setAdresse(me.getLocation().getName());
+						c.setNom(me.getLast_name());
+						c.setPrenom(me.getFirst_name());
+						c.setEmail(me.getEmail());
+						try {
+							java.util.Date dtJ= new SimpleDateFormat("MM/DD/YYYY").parse(me.getBirthday());
+							c.setDate_naissance(dtJ);
+						}catch (java.text.ParseException ex) {
+							ex.printStackTrace();
+							//Logger.getLogger(UserForm.class.getName()).log(Level.SEVERE, null, ex);
+						}
+						//Logger.getLogger(UserForm.class.getName()).log(Level.SEVERE, null, ex);
+						if(me.getGender().equals("male"))
+						{
+							c.setSexe("homme");
+						}
+						else
+						{
+							c.setSexe("femme");
+						}
+						c.setId(Long.parseLong(me.getId()));
+						c.setNum_tel(0);
+						c.setImage("https://graph.facebook.com/v2.11/me/picture?access_token=" + token);
+						c.setRoles("ROLE_CLIENT");
+						c.setPassword(me.getFirst_name()+"-"+me.getLast_name());
+						System.out.println(c);
+					    System.out.println("************************************");
+						UtilisateurService us=new UtilisateurService();
+						us.user=c;
+						System.out.println(us.LoggedUser(c.getUsername(), c.getPassword()));
+						if (us.LoggedUser(c.getUsername(), c.getPassword()).getUsername()==null) {
+							us.addUser(c);
+						}
 						//System.out.println(me.getAbout().toString());
-						System.out.println(me.getBirthday().toString());
-						System.out.println(me.getEmail().toString());
-						System.out.println(me.getFirst_name().toString());
-						System.out.println(me.getId());
+						//System.out.println(me.getBirthday().toString());
+						//System.out.println(me.getEmail().toString());
+						//System.out.println(me.getFirst_name().toString());
+						//System.out.println(me.getId());
                          
                         form.getContentPane().removeAll(); 
                          
@@ -157,6 +204,8 @@ public class UserForm extends com.codename1.ui.Form {
  
         //trigger the login if not already logged in 
         fb.doLogout();
+		UtilisateurService.user=null;
+		PatisserieService.patisserie=null;
         Storage.getInstance().writeObject("token", ""); 
         showIfNotLoggedIn(form);
     } 
@@ -186,6 +235,7 @@ public class UserForm extends com.codename1.ui.Form {
                 String token = fb.getAccessToken().getToken();
                 Storage.getInstance().writeObject("token", token);
                 showIfLoggedIn(form);
+				//new TrendingForm().show();
             } 
              
         }); 

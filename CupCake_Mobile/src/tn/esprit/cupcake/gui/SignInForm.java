@@ -52,6 +52,7 @@ public class SignInForm extends com.codename1.ui.Form {
     private com.codename1.ui.Button gui_Button_2 = new com.codename1.ui.Button();
     private com.codename1.ui.Button gui_Button_3 = new com.codename1.ui.Button();
     private com.codename1.ui.Button gui_Button_1 = new com.codename1.ui.Button();
+	private com.codename1.ui.Button gui_Button_4 = new com.codename1.ui.Button();
 
 
 // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
@@ -59,7 +60,7 @@ public class SignInForm extends com.codename1.ui.Form {
         EventCallbackClass callback = new EventCallbackClass();
         gui_Button_2.addActionListener(callback);
 		gui_Button_1.addActionListener(callback);
-		gui_Button_3.addActionListener(callback);
+		gui_Button_4.addActionListener(callback);
 
 		
     }
@@ -85,7 +86,7 @@ public class SignInForm extends com.codename1.ui.Form {
             if(sourceComponent == gui_Button_2) {
                 onButton_2ActionEvent(ev);
             }
-			if(sourceComponent == gui_Button_3) {
+			if(sourceComponent == gui_Button_4) {
                 onButton_3ActionEvent(ev);
             }
 			
@@ -113,12 +114,15 @@ public class SignInForm extends com.codename1.ui.Form {
         gui_Text_Field_1.setName("Text_Field_1");
         gui_Container_1.addComponent(gui_Button_2);
         gui_Container_1.addComponent(gui_Button_3);
+		gui_Container_1.addComponent(gui_Button_4);
         gui_Label_1.setUIID("CenterLabel");
         gui_Label_1.setName("Label_1");
         gui_Label_1.setIcon(resourceObjectInstance.getImage("profile_image.png"));
         gui_Component_Group_1.setName("Component_Group_1");
         gui_Button_2.setText("Sign In");
         gui_Button_2.setName("Button_2");
+		gui_Button_4.setText("Sign In With Facebook");
+        gui_Button_4.setName("Button_4");
         gui_Button_3.setText("Forgot Your Password");
         gui_Button_3.setUIID("CenterLabelSmall");
         gui_Button_3.setName("Button_3");
