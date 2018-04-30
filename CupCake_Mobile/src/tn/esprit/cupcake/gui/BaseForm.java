@@ -19,11 +19,15 @@
 
 package tn.esprit.cupcake.gui;
 
+import com.codename1.components.ImageViewer;
+import com.codename1.components.ScaleImageLabel;
 import com.codename1.ui.Button;
 import com.codename1.ui.Container;
+import com.codename1.ui.EncodedImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Image;
 import com.codename1.ui.Label;
+import com.codename1.ui.URLImage;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.util.Resources;
@@ -36,6 +40,9 @@ import tn.esprit.cupcake.services.UtilisateurService;
  * @author Shai Almog
  */
 public class BaseForm extends Form {
+	private EncodedImage encoded;
+	private URLImage uRLImage;
+	private ImageViewer imgv;
     public void installSidemenu(Resources res) {
         Image selection = res.getImage("selection-in-sidemenu.png");
         
@@ -79,7 +86,20 @@ public class BaseForm extends Form {
         
         // spacer
         getToolbar().addComponentToSideMenu(new Label(" ", "SideCommand"));
-        getToolbar().addComponentToSideMenu(new Label(res.getImage("profile_image.png"), "Container"));
+		/*encoded = EncodedImage.createFromImage(res.getImage(""), false);
+		uRLImage =URLImage.createToStorage(encoded,"test", UtilisateurService.user.getImage());
+		imgv= new ImageViewer(uRLImage);*/
+		/*EncodedImage placeholder = EncodedImage.createFromImage(Image.createImage(50, 50, 0xffff0000), true); 
+                        URLImage background = URLImage.createToStorage(placeholder, "fbuser.jpg",UtilisateurService.user.getImage() );*/
+		EncodedImage placeholder = EncodedImage.createFromImage(Image.createImage(50, 50, 0xffff0000), true); 
+                        URLImage background = URLImage.createToStorage(placeholder, "fbuser.jpg",UtilisateurService.user.getImage()); 
+                        background.fetch(); 
+                        ScaleImageLabel myPic = new ScaleImageLabel(); 
+                        myPic.setIcon(background); 
+						ImageViewer img = new ImageViewer(background);
+                         
+                        
+		getToolbar().addComponentToSideMenu(new Label(img.getImage(), "Container"));
         getToolbar().addComponentToSideMenu(new Label(UtilisateurService.user.getNom()+" "+UtilisateurService.user.getPrenom(), "SideCommandNoPad"));
         getToolbar().addComponentToSideMenu(new Label(UtilisateurService.user.getUsername()+" "+UtilisateurService.user.getDate_naissance(), "SideCommandSmall"));
     }
