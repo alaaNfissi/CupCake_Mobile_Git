@@ -20,10 +20,12 @@ import java.util.ArrayList;
 import java.util.List;
 //import java.util.Locale;
 import java.util.Map;
+//import tn.esprit.cupcake.entities.Client;
 /*import java.util.logging.Level;
 import java.util.logging.Logger;*/
 import tn.esprit.cupcake.entities.Commande;
 import tn.esprit.cupcake.entities.Patisserie;
+import tn.esprit.cupcake.entities.Utilisateur;
 
 /**
  *
@@ -75,6 +77,20 @@ public class CommandeService {
 	public ArrayList<Commande> getListCommande(Patisserie p) {
 		ConnectionRequest con = new ConnectionRequest();
 		con.setUrl("http://localhost/CupCake_Web_VF-master/web/app_dev.php/api/getCommandesPatisserie?idPatisserie=" + p.getId_patisserie());
+		con.addResponseListener(new ActionListener<NetworkEvent>() {
+			@Override
+			public void actionPerformed(NetworkEvent evt) {
+				CommandeService cs = new CommandeService();
+				listCommandes = cs.ListCommandesPatisserie(new String(con.getResponseData()));
+			}
+		});
+		NetworkManager.getInstance().addToQueueAndWait(con);
+		return listCommandes;
+	}
+	
+	public ArrayList<Commande> getListCommandeUser(Utilisateur  u) {
+		ConnectionRequest con = new ConnectionRequest();
+		con.setUrl("http://localhost/CupCake_Web_VF-master/web/app_dev.php/api/getCommandeUser?idU=" +u.getId());
 		con.addResponseListener(new ActionListener<NetworkEvent>() {
 			@Override
 			public void actionPerformed(NetworkEvent evt) {

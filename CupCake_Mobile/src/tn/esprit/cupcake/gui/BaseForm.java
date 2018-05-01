@@ -76,6 +76,9 @@ public class BaseForm extends Form {
 		{
 			getToolbar().addCommandToSideMenu("My Space",null,e->new MySpaceForm(res).show());
 		}
+		getToolbar().addCommandToSideMenu("Mes Commandes", null, e -> {
+			new CommandeUserForm().show();
+		});
             getToolbar().addCommandToSideMenu("Trending", trendingImage, e -> new TrendingForm(res).show());
             getToolbar().addCommandToSideMenu("Settings", null, e -> {});
 		    getToolbar().addCommandToSideMenu("Sign out", null, e -> {
