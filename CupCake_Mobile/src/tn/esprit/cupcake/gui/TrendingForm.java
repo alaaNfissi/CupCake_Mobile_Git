@@ -169,4 +169,5 @@ public class TrendingForm extends BaseForm {
     protected boolean isCurrentTrending() {
         return true;
     }
+	
 }

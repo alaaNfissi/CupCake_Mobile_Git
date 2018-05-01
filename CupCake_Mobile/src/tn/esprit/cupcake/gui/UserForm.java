@@ -6,6 +6,7 @@
 package tn.esprit.cupcake.gui; 
  
 import com.codename1.components.ScaleImageLabel; 
+import com.codename1.components.ShareButton;
 import com.codename1.facebook.FaceBookAccess; 
 import com.codename1.facebook.User; 
 import com.codename1.io.Storage; 
@@ -15,13 +16,17 @@ import com.codename1.social.FacebookConnect;
 import com.codename1.social.Login; 
 import com.codename1.social.LoginCallback; 
 import com.codename1.ui.Button; 
+import com.codename1.ui.Component;
+import com.codename1.ui.Container;
 import com.codename1.ui.EncodedImage; 
 import com.codename1.ui.Image; 
 import com.codename1.ui.Label; 
+import com.codename1.ui.TextArea;
 import com.codename1.ui.URLImage; 
 import com.codename1.ui.events.ActionEvent; 
 import com.codename1.ui.events.ActionListener; 
 import com.codename1.ui.geom.Dimension; 
+import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout; 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -283,7 +288,7 @@ public class UserForm extends com.codename1.ui.Form {
                          
                         form.add(myPic); 
                         form.add(buttonLogout); 
-                         
+						form.add(showShare());
                         form.revalidate();
 						//new TrendingForm().show();
                         //form.show(); 
@@ -373,5 +378,25 @@ public class UserForm extends com.codename1.ui.Form {
 	public void onButton_3ActionEvent(com.codename1.ui.events.ActionEvent ev) {
 		System.out.println("test 1");
         new UserForm().show();
+    }
+	
+	 private Component showShare() {
+        final Container c = new Container(new BorderLayout());
+        final ShareButton share = new ShareButton();
+        final TextArea t = new TextArea("Sharing on Facebook with CodenameOne is a breeze.\n"
+                + "http://www.codenameone.com\n"
+                + "(Sent from the facebook demo app)");
+        t.addActionListener(new ActionListener() {
+			@Override
+            public void actionPerformed(ActionEvent evt) {
+                share.setTextToShare("test !");
+            }
+        });
+        c.addComponent(BorderLayout.CENTER, t);
+        share.setTextToShare(t.getText());
+        Container cnt = new Container(new BorderLayout());
+        cnt.addComponent(BorderLayout.SOUTH, share);
+        c.addComponent(BorderLayout.EAST, cnt);
+        return c;
     }
 } 
