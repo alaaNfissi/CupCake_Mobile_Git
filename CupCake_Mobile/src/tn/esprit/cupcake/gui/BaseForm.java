@@ -71,13 +71,14 @@ public class BaseForm extends Form {
         //getToolbar().addCommandToSideMenu("WalkthruForm", statsImage, e -> new WalkthruForm(res).show());
         getToolbar().addCommandToSideMenu("Calendar", calendarImage, e -> new CalendarForm(res).show());
         getToolbar().addCommandToSideMenu("Map", null, e -> {});
+		System.out.println(UtilisateurService.user);
 		if(UtilisateurService.user.getRoles().equals("ROLE_PATISSIER"))
 		{
 			getToolbar().addCommandToSideMenu("My Space",null,e->new MySpaceForm(res).show());
 		}
-        getToolbar().addCommandToSideMenu("Trending", trendingImage, e -> new TrendingForm(res).show());
-        getToolbar().addCommandToSideMenu("Settings", null, e -> {});
-		getToolbar().addCommandToSideMenu("Sign out", null, e -> {
+            getToolbar().addCommandToSideMenu("Trending", trendingImage, e -> new TrendingForm(res).show());
+            getToolbar().addCommandToSideMenu("Settings", null, e -> {});
+		    getToolbar().addCommandToSideMenu("Sign out", null, e -> {
 			UtilisateurService.user=null;
 			PatisserieService.patisserie=null;
 			new SignInForm(res).show();

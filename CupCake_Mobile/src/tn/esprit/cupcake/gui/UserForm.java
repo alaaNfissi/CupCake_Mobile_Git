@@ -29,6 +29,8 @@ import java.text.SimpleDateFormat;
 import java.util.logging.Logger;*/
 /*import java.util.logging.Level;
 import java.util.logging.Logger;*/
+/*import java.util.logging.Level;
+import java.util.logging.Logger;*/
 import tn.esprit.cupcake.entities.Client;
 import tn.esprit.cupcake.entities.Patisserie;
 import tn.esprit.cupcake.services.PatisserieService;
@@ -51,16 +53,117 @@ public class UserForm extends com.codename1.ui.Form {
         showFormElements(); 
     } 
  
+	private com.codename1.ui.Container gui_Container_1 = new com.codename1.ui.Container(new com.codename1.ui.layouts.BoxLayout(com.codename1.ui.layouts.BoxLayout.Y_AXIS));
+    private com.codename1.ui.Label gui_Label_1 = new com.codename1.ui.Label();
+    private com.codename1.ui.ComponentGroup gui_Component_Group_1 = new com.codename1.ui.ComponentGroup();
+    private com.codename1.ui.TextField gui_Text_Field_2 = new com.codename1.ui.TextField();
+    private com.codename1.ui.TextField gui_Text_Field_1 = new com.codename1.ui.TextField();
+    private com.codename1.ui.Button gui_Button_2 = new com.codename1.ui.Button();
+    private com.codename1.ui.Button gui_Button_3 = new com.codename1.ui.Button();
+    private com.codename1.ui.Button gui_Button_1 = new com.codename1.ui.Button();
+	private com.codename1.ui.Button gui_Button_4 = new com.codename1.ui.Button();
+	
+	    class EventCallbackClass implements com.codename1.ui.events.ActionListener, com.codename1.ui.events.DataChangedListener {
+        private com.codename1.ui.Component cmp;
+        public EventCallbackClass(com.codename1.ui.Component cmp) {
+            this.cmp = cmp;
+        }
+
+        public EventCallbackClass() {
+        }
+
+        public void actionPerformed(com.codename1.ui.events.ActionEvent ev) {
+            com.codename1.ui.Component sourceComponent = ev.getComponent();
+            if(sourceComponent.getParent().getLeadParent() != null) {
+                sourceComponent = sourceComponent.getParent().getLeadParent();
+            }
+			if(sourceComponent == gui_Button_1) {
+				//System.out.println("test");
+                onButton_1ActionEvent(ev);
+            }
+            if(sourceComponent == gui_Button_2) {
+                onButton_2ActionEvent(ev);
+            }
+			if(sourceComponent == gui_Button_4) {
+                onButton_3ActionEvent(ev);
+            }
+			
+        }
+
+        public void dataChanged(int type, int index) {
+        }
+    }
+
+	
+	  private void guiBuilderBindComponentListeners() {
+        UserForm.EventCallbackClass callback = new UserForm.EventCallbackClass();
+        gui_Button_2.addActionListener(callback);
+		gui_Button_1.addActionListener(callback);
+		gui_Button_4.addActionListener(callback);
+    }
 //-- DON'T EDIT BELOW THIS LINE!!! 
  
  
 // <editor-fold defaultstate="collapsed" desc="Generated Code">                           
     private void initGuiBuilderComponents(com.codename1.ui.util.Resources resourceObjectInstance) {
-        setLayout(new com.codename1.ui.layouts.LayeredLayout()); 
+        //setLayout(new com.codename1.ui.layouts.LayeredLayout()); 
         setInlineStylesTheme(resourceObjectInstance);
-                setInlineStylesTheme(resourceObjectInstance);
-        setTitle("UserForm"); 
-        setName("UserForm"); 
+        //setInlineStylesTheme(resourceObjectInstance);
+        //setTitle("UserForm"); 
+        //setName("UserForm");
+		/*-------------------------------------------------*/
+		ScaleImageLabel myPic = new ScaleImageLabel();
+            Image img=resourceObjectInstance.getImage("profile_image.png");
+			img.scaled(108, 94);
+		try {
+			img = Image.createImage("/anonimo.jpg");
+			
+		} catch (IOException ex) {
+			ex.printStackTrace();
+			//Logger.getLogger(UserForm.class.getName()).log(Level.SEVERE, null, ex);
+		}
+            myPic.setIcon(img);
+			Dimension d = new Dimension(50, 50);
+            myPic.setPreferredSize(d);
+		guiBuilderBindComponentListeners();
+        setLayout(new com.codename1.ui.layouts.BorderLayout());
+        setTitle("Sign In");
+        setName("SignInForm");
+        addComponent(com.codename1.ui.layouts.BorderLayout.CENTER, gui_Container_1);
+        gui_Container_1.setScrollableY(true);
+        gui_Container_1.setName("Container_1");
+        gui_Container_1.addComponent(myPic);
+		gui_Container_1.addComponent(gui_Label_1);
+        gui_Container_1.addComponent(gui_Component_Group_1);
+        gui_Component_Group_1.setName("Component_Group_1");
+        gui_Component_Group_1.addComponent(gui_Text_Field_2);
+        gui_Component_Group_1.addComponent(gui_Text_Field_1);
+        gui_Text_Field_2.setHint("Username/Email");
+        gui_Text_Field_2.setName("Text_Field_2");
+        gui_Text_Field_1.setHint("Password");
+        gui_Text_Field_1.setName("Text_Field_1");
+        gui_Container_1.addComponent(gui_Button_2);
+        gui_Container_1.addComponent(gui_Button_3);
+		gui_Container_1.addComponent(gui_Button_4);
+        gui_Label_1.setUIID("CenterLabel");
+        gui_Label_1.setName("Label_1");
+		gui_Label_1.setText("");
+        myPic.setName("Label_1");
+		myPic.setUIID("CenterLabel");
+        gui_Component_Group_1.setName("Component_Group_1");
+        gui_Button_2.setText("Sign In");
+        gui_Button_2.setName("Button_2");
+		gui_Button_4.setText("Sign In With Facebook");
+        gui_Button_4.setName("Button_4");
+        gui_Button_3.setText("Forgot Your Password");
+        gui_Button_3.setUIID("CenterLabelSmall");
+        gui_Button_3.setName("Button_3");
+        addComponent(com.codename1.ui.layouts.BorderLayout.SOUTH, gui_Button_1);
+        gui_Container_1.setScrollableY(true);
+        gui_Container_1.setName("Container_1");
+        gui_Button_1.setText("Create New Account");
+        gui_Button_1.setUIID("CenterLabel");
+        gui_Button_1.setName("Button_1");
     }// </editor-fold> 
  
 //-- DON'T EDIT ABOVE THIS LINE!!! 
@@ -77,37 +180,37 @@ public class UserForm extends com.codename1.ui.Form {
             showIfNotLoggedIn(form);
         } else { 
             showIfLoggedIn(form);
-		   //new TrendingForm().show();
         } 
     } 
  
     private void showIfNotLoggedIn(UserForm form) {
-        try { 
+        //try { 
             form.getContentPane().removeAll();
             Storage.getInstance().writeObject("token", ""); 
              
-            ScaleImageLabel myPic = new ScaleImageLabel();
+            /*ScaleImageLabel myPic = new ScaleImageLabel();
             Image img = Image.createImage("/anonimo.jpg");
             myPic.setIcon(img);
             Dimension d = new Dimension(50, 50);
-            myPic.setPreferredSize(d);
+            myPic.setPreferredSize(d);*/
              
-            form.add(myPic);
+            //form.add(myPic);
              
-            form.add(new Label("User not connected"));
+            //form.add(new Label("User not connected"));
+			gui_Label_1.setText("User not connected");
              
-            Button buttonLogin = new Button("Login");
-            buttonLogin.addActionListener((e) -> {
+            //Button buttonLogin = new Button("Login");
+            gui_Button_4.addActionListener((e) -> {
                 facebookLogin(form);
             }); 
-            form.add(buttonLogin);
+            form.add(gui_Container_1);
              
             form.revalidate();
             //form.show(); 
-        } catch (IOException ex) {
+       /* } catch (IOException ex) {
             ex.printStackTrace();
             //Logger.getLogger(MyApplication.class.getName()).log(Level.SEVERE, null, ex); 
-        } 
+        } */
     } 
  
     private void showIfLoggedIn(UserForm form) {
@@ -181,7 +284,8 @@ public class UserForm extends com.codename1.ui.Form {
                         form.add(myPic); 
                         form.add(buttonLogout); 
                          
-                        form.revalidate(); 
+                        form.revalidate();
+						//new TrendingForm().show();
                         //form.show(); 
                     } 
  
@@ -248,5 +352,26 @@ public class UserForm extends com.codename1.ui.Form {
             Storage.getInstance().writeObject("token", token);
             showIfLoggedIn(form);
         } 
-    } 
+    }
+	
+	//-- DON'T EDIT ABOVE THIS LINE!!!
+    public void onButton_2ActionEvent(com.codename1.ui.events.ActionEvent ev) {
+		UtilisateurService us=new UtilisateurService();
+			us.LoggedUser(gui_Text_Field_2.getText(), gui_Text_Field_1.getText());
+        //new InboxForm().show();
+		if (UtilisateurService.user != null) {
+				//Form FL=new Form(UtilisateurService.user.getUsername());
+				//FL.show();
+				new TrendingForm().show();
+			}
+    }
+	
+	public void onButton_1ActionEvent(com.codename1.ui.events.ActionEvent ev) {
+        new SignUpForm().show();
+    }
+	
+	public void onButton_3ActionEvent(com.codename1.ui.events.ActionEvent ev) {
+		System.out.println("test 1");
+        new UserForm().show();
+    }
 } 

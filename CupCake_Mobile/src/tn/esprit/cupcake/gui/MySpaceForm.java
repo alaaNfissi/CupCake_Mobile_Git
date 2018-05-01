@@ -18,15 +18,18 @@ import com.codename1.ui.TextArea;
 import com.codename1.ui.animations.CommonTransitions;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.geom.Rectangle;
+import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.layouts.LayeredLayout;
 import com.codename1.ui.plaf.RoundBorder;
 import com.codename1.ui.plaf.Style;
+//import com.twilio.rest.monitor.v1.Alert;
 import java.util.ArrayList;
 import java.util.List;
 import tn.esprit.cupcake.entities.Commande;
 import tn.esprit.cupcake.services.CommandeService;
+import tn.esprit.cupcake.services.LivraisonService;
 import tn.esprit.cupcake.services.PatisserieService;
 
 /**
@@ -46,12 +49,12 @@ public class MySpaceForm extends BaseForm {
 
 	public MySpaceForm(com.codename1.ui.util.Resources resourceObjectInstance) {
 		initGuiBuilderComponents(resourceObjectInstance);
-		CommandeService cs=new CommandeService();
+		CommandeService cs = new CommandeService();
 		ArrayList<Commande> listCommandes = cs.getListCommande(PatisserieService.patisserie);
 		getToolbar().setTitleComponent(
 				FlowLayout.encloseCenterMiddle(
 						new Label("My Space", "Title"),
-						new Label(""+listCommandes.size(), "InboxNumber")
+						new Label("" + listCommandes.size(), "InboxNumber")
 				)
 		);
 
@@ -214,20 +217,39 @@ public class MySpaceForm extends BaseForm {
 			Label gui_Label_1 = new com.codename1.ui.Label();
 			Container gui_Container_4 = new com.codename1.ui.Container(new com.codename1.ui.layouts.FlowLayout());
 			Label gui_Label_4 = new com.codename1.ui.Label();
+			Label gui_Label_5 = new com.codename1.ui.Label();
 			Container gui_Container_3 = new com.codename1.ui.Container(new com.codename1.ui.layouts.BoxLayout(com.codename1.ui.layouts.BoxLayout.Y_AXIS));
 			Label gui_Label_3 = new com.codename1.ui.Label();
 			Label gui_Label_2 = new com.codename1.ui.Label();
 			TextArea gui_Text_Area_1 = new com.codename1.ui.TextArea();
 			Label gui_Label_6 = new com.codename1.ui.Label();
+			Container gui_Container_6 = new com.codename1.ui.Container(new com.codename1.ui.layouts.BoxLayout(com.codename1.ui.layouts.BoxLayout.Y_AXIS));
+			Button viewBtn = new Button();
 
 			addComponent(gui_Container_1);
 			gui_Container_1.setName("Container_1");
 			gui_Container_1.addComponent(com.codename1.ui.layouts.BorderLayout.EAST, gui_Container_2);
 			gui_Container_2.setName("Container_2");
 			gui_Container_2.addComponent(gui_Label_1);
-			gui_Label_1.setText("N° : "+listCommande.getNum_commande());
+			gui_Container_2.addComponent(gui_Container_6);
+			gui_Label_1.setText("N° : " + listCommande.getNum_commande());
 			gui_Label_1.setUIID("SmallFontLabel");
 			gui_Label_1.setName("Label_1");
+			//viewBtn.setUIID("GetStartedRedArrow");
+			viewBtn.setText("");
+			viewBtn.setUIID("GetStartedButton");
+			viewBtn.setName("Button_1");
+			viewBtn.setTextPosition(com.codename1.ui.Component.LEFT);
+			gui_Label_5.setUIID("GetStartedRedArrow");
+			gui_Label_5.setName("Label_1");
+			gui_Container_6.setUIID("GetStartedButton");
+			gui_Container_6.setName("Container_6");
+			com.codename1.ui.FontImage.setMaterialIcon(gui_Label_5, "".charAt(0));
+			gui_Container_6.addComponent(viewBtn);
+			gui_Container_6.addComponent(gui_Label_5);
+//			((com.codename1.ui.layouts.FlowLayout)gui_Container_6.getLayout()).setAlign(com.codename1.ui.Component.CENTER);
+			//        ((com.codename1.ui.layouts.FlowLayout)gui_Container_6.getLayout()).setValign(com.codename1.ui.Component.CENTER);
+			/*-----------------------------------------------------------------------*/
 			gui_Container_1.addComponent(com.codename1.ui.layouts.BorderLayout.WEST, gui_Container_4);
 			gui_Container_4.setName("Container_4");
 			((com.codename1.ui.layouts.FlowLayout) gui_Container_4.getLayout()).setAlign(com.codename1.ui.Component.CENTER);
@@ -243,9 +265,9 @@ public class MySpaceForm extends BaseForm {
 			/*SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 				String date = obj.get("dateCommande").toString();
 				c.setDate_commande(formatter.parse(date));*/
-			gui_Label_3.setText("Date : "+listCommande.getDate_commande());
+			gui_Label_3.setText("Date : " + listCommande.getDate_commande());
 			gui_Label_3.setName("Label_3");
-			gui_Label_2.setText("Prix T : "+listCommande.getPrix_totale());
+			gui_Label_2.setText("Prix T : " + listCommande.getPrix_totale());
 			gui_Label_2.setUIID("RedLabel");
 			gui_Label_2.setName("Label_2");
 			gui_Text_Area_1.setText(PatisserieService.patisserie.getLibelle_patisserie());
@@ -256,6 +278,21 @@ public class MySpaceForm extends BaseForm {
 			((com.codename1.ui.layouts.FlowLayout) gui_Container_4.getLayout()).setAlign(com.codename1.ui.Component.CENTER);
 			gui_Container_3.setName("Container_3");
 			addComponent(gui_Label_6);
+
+			viewBtn.addActionListener((e) -> {
+				//new CalendarForm().show();
+				LivraisonService ls=new LivraisonService();
+				ls.getLivraisonByIdCmd(listCommande);
+				System.out.println("teeeeeest "+ls.l.getEtatLivraison());
+				Dialog d = new Dialog("Commande n° : "+listCommande.getNum_commande());
+				TextArea popupBody = new TextArea("Prix Livraison : "+ls.l.getPrix_livraison()+" DT\n"+"Etat : "+ls.l.getEtatLivraison()+"\n"+"Date : "+ls.l.getDate_livraison(), 3, 20);
+				popupBody.setUIID("PopupBody");
+				popupBody.setEditable(false);
+				d.setLayout(new BorderLayout());
+				d.add(BorderLayout.CENTER, popupBody);
+				d.showPopupDialog(viewBtn);
+			});
+			gui_Container_1.setLeadComponent(viewBtn);
 		}
 		/*addComponent(gui_Container_1);
 		gui_Container_1.setName("Container_1");

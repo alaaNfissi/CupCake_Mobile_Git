@@ -4,23 +4,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/gui/SignInForm.java</file>
             <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/gui/BaseForm.java</file>
-            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/services/CommandeService.java</file>
-            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/gui/LoginGui.java</file>
-            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/gui/SignUpForm.java</file>
+            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/gui/SignInForm.java</file>
+            <file>jar:file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/lib/CodenameOne_SRC.zip!/com/codename1/ui/Component.java</file>
             <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/gui/TrendingForm.java</file>
-            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/gui/CreatePatisserieForm.java</file>
-            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/services/test.java</file>
+            <file>jar:file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/lib/CodenameOne_SRC.zip!/com/codename1/facebook/User.java</file>
             <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/services/PatisserieService.java</file>
-            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/gui/WalkthruForm.java</file>
-            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/gui/CalendarForm.java</file>
-            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/entities/Commande.java</file>
-            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/gui/InboxForm.java</file>
-            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/gui/MySpaceForm.java</file>
-            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/gui/DetailsForm.java</file>
+            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/gui/UserForm.java</file>
             <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/services/UtilisateurService.java</file>
-            <file>file:/C:/Users/Alaa/Documents/NetBeansProjects/CupCake_Mobile_Git/CupCake_Mobile/src/tn/esprit/cupcake/gui/SplashForm.java</file>
         </group>
     </open-files>
 </project-private>

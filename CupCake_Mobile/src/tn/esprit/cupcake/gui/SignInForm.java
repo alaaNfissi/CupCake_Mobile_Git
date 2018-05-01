@@ -61,8 +61,6 @@ public class SignInForm extends com.codename1.ui.Form {
         gui_Button_2.addActionListener(callback);
 		gui_Button_1.addActionListener(callback);
 		gui_Button_4.addActionListener(callback);
-
-		
     }
 
     class EventCallbackClass implements com.codename1.ui.events.ActionListener, com.codename1.ui.events.DataChangedListener {
