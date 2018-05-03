@@ -31,7 +31,7 @@ public class SignUpForm extends com.codename1.ui.Form {
 		getToolbar().setUIID("Container");
 		getToolbar().getTitleComponent().setUIID("SigninTitle");
 		FontImage mat = FontImage.createMaterial(FontImage.MATERIAL_CLOSE, "SigninTitle", 3.5f);
-		getToolbar().addCommandToLeftBar("", mat, e -> new SplashForm().show());
+		getToolbar().addCommandToLeftBar("", mat, e -> new SignInForm().show());
 		getContentPane().setUIID("SignInForm");
 	}
 
@@ -43,7 +43,7 @@ public class SignUpForm extends com.codename1.ui.Form {
 	private ComponentGroup gui_Component_Group_1 = new com.codename1.ui.ComponentGroup();
 	private TextField username = new TextField();
 	//private TextField email = new TextField();
-	TextField email = new TextField("", "", 20, TextArea.EMAILADDR);
+	private TextField email = new TextField("", "", 20, TextArea.EMAILADDR);
 	private TextField password = new TextField();
 	//private TextField nTel = new TextField();
 	private TextField nTel = new TextField("", "", 20, TextArea.PHONENUMBER);

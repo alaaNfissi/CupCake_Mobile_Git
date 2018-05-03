@@ -7,6 +7,8 @@ package tn.esprit.cupcake.gui;
 
 import com.codename1.components.FloatingActionButton;
 import com.codename1.ui.Button;
+import com.codename1.ui.ButtonGroup;
+import com.codename1.ui.ComboBox;
 import com.codename1.ui.Component;
 import com.codename1.ui.Container;
 import com.codename1.ui.Dialog;
@@ -14,6 +16,7 @@ import com.codename1.ui.Display;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Image;
 import com.codename1.ui.Label;
+import com.codename1.ui.RadioButton;
 import com.codename1.ui.TextArea;
 import com.codename1.ui.animations.CommonTransitions;
 import com.codename1.ui.events.ActionListener;
@@ -286,10 +289,34 @@ public class MySpaceForm extends BaseForm {
 				System.out.println("teeeeeest "+ls.l.getEtatLivraison());
 				Dialog d = new Dialog("Commande n° : "+listCommande.getNum_commande());
 				TextArea popupBody = new TextArea("Prix Livraison : "+ls.l.getPrix_livraison()+" DT\n"+"Etat : "+ls.l.getEtatLivraison()+"\n"+"Date : "+ls.l.getDate_livraison(), 3, 20);
+				Button changeBtn=new Button("Change State");
+				
+				changeBtn.addActionListener((l)->{
+					CommandeService.commande=listCommande;
+					new EtatLivraisonForm().show();
+					/*d.showBack();
+					Dialog d1 =new Dialog();
+					d1.setLayout(new BorderLayout());
+					popupBody.setText("");
+					RadioButton etat1=new RadioButton("La commande est en cours du traitement");
+					RadioButton etat2=new RadioButton("La commande est en cours du traitement");
+					RadioButton etat3=new RadioButton("La commande est en cours du traitement");
+					ButtonGroup grpBtn=new ButtonGroup(etat1,etat2,etat3);
+					Button valider=new Button("Valider");
+					//ComboBox cmbEtat=new ComboBox("1","2","3");
+					d1.add(BorderLayout.NORTH,etat1);
+					
+					d1.add(BorderLayout.SOUTH,valider);
+					valider.addActionListener((i)->{
+						//grpBtn.getSelectedIndex();
+					});
+					d1.showPopupDialog(changeBtn);*/
+				});
 				popupBody.setUIID("PopupBody");
 				popupBody.setEditable(false);
 				d.setLayout(new BorderLayout());
 				d.add(BorderLayout.CENTER, popupBody);
+				d.add(BorderLayout.SOUTH,changeBtn);
 				d.showPopupDialog(viewBtn);
 			});
 			gui_Container_1.setLeadComponent(viewBtn);

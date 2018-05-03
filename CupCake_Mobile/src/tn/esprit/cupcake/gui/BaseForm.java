@@ -84,6 +84,8 @@ public class BaseForm extends Form {
 		    getToolbar().addCommandToSideMenu("Sign out", null, e -> {
 			UtilisateurService.user=null;
 			PatisserieService.patisserie=null;
+			UserForm form=new UserForm();
+			form.facebookLogout(form);
 			new SignInForm(res).show();
 		});
 

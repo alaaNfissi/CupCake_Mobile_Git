@@ -47,12 +47,12 @@ public class SignInForm extends com.codename1.ui.Form {
     private com.codename1.ui.Container gui_Container_1 = new com.codename1.ui.Container(new com.codename1.ui.layouts.BoxLayout(com.codename1.ui.layouts.BoxLayout.Y_AXIS));
     private com.codename1.ui.Label gui_Label_1 = new com.codename1.ui.Label();
     private com.codename1.ui.ComponentGroup gui_Component_Group_1 = new com.codename1.ui.ComponentGroup();
-    private com.codename1.ui.TextField gui_Text_Field_2 = new com.codename1.ui.TextField();
-    private com.codename1.ui.TextField gui_Text_Field_1 = new com.codename1.ui.TextField();
+    //private com.codename1.ui.TextField gui_Text_Field_2 = new com.codename1.ui.TextField();
+    //private com.codename1.ui.TextField gui_Text_Field_1 = new com.codename1.ui.TextField();
     private com.codename1.ui.Button gui_Button_2 = new com.codename1.ui.Button();
-    private com.codename1.ui.Button gui_Button_3 = new com.codename1.ui.Button();
+    //private com.codename1.ui.Button gui_Button_3 = new com.codename1.ui.Button();
     private com.codename1.ui.Button gui_Button_1 = new com.codename1.ui.Button();
-	private com.codename1.ui.Button gui_Button_4 = new com.codename1.ui.Button();
+	//private com.codename1.ui.Button gui_Button_4 = new com.codename1.ui.Button();
 
 
 // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
@@ -60,7 +60,7 @@ public class SignInForm extends com.codename1.ui.Form {
         EventCallbackClass callback = new EventCallbackClass();
         gui_Button_2.addActionListener(callback);
 		gui_Button_1.addActionListener(callback);
-		gui_Button_4.addActionListener(callback);
+		//gui_Button_4.addActionListener(callback);
     }
 
     class EventCallbackClass implements com.codename1.ui.events.ActionListener, com.codename1.ui.events.DataChangedListener {
@@ -84,9 +84,9 @@ public class SignInForm extends com.codename1.ui.Form {
             if(sourceComponent == gui_Button_2) {
                 onButton_2ActionEvent(ev);
             }
-			if(sourceComponent == gui_Button_4) {
+			/*if(sourceComponent == gui_Button_4) {
                 onButton_3ActionEvent(ev);
-            }
+            }*/
 			
         }
 
@@ -104,26 +104,26 @@ public class SignInForm extends com.codename1.ui.Form {
         gui_Container_1.addComponent(gui_Label_1);
         gui_Container_1.addComponent(gui_Component_Group_1);
         gui_Component_Group_1.setName("Component_Group_1");
-        gui_Component_Group_1.addComponent(gui_Text_Field_2);
+        /*gui_Component_Group_1.addComponent(gui_Text_Field_2);
         gui_Component_Group_1.addComponent(gui_Text_Field_1);
         gui_Text_Field_2.setHint("Username/Email");
         gui_Text_Field_2.setName("Text_Field_2");
         gui_Text_Field_1.setHint("Password");
-        gui_Text_Field_1.setName("Text_Field_1");
+        gui_Text_Field_1.setName("Text_Field_1");*/
         gui_Container_1.addComponent(gui_Button_2);
-        gui_Container_1.addComponent(gui_Button_3);
-		gui_Container_1.addComponent(gui_Button_4);
+        /*gui_Container_1.addComponent(gui_Button_3);
+		gui_Container_1.addComponent(gui_Button_4);*/
         gui_Label_1.setUIID("CenterLabel");
         gui_Label_1.setName("Label_1");
         gui_Label_1.setIcon(resourceObjectInstance.getImage("profile_image.png"));
         gui_Component_Group_1.setName("Component_Group_1");
         gui_Button_2.setText("Sign In");
         gui_Button_2.setName("Button_2");
-		gui_Button_4.setText("Sign In With Facebook");
-        gui_Button_4.setName("Button_4");
-        gui_Button_3.setText("Forgot Your Password");
+		/*gui_Button_4.setText("Sign In With Facebook");
+        gui_Button_4.setName("Button_4");*/
+        /*gui_Button_3.setText("Forgot Your Password");
         gui_Button_3.setUIID("CenterLabelSmall");
-        gui_Button_3.setName("Button_3");
+        gui_Button_3.setName("Button_3");*/
         addComponent(com.codename1.ui.layouts.BorderLayout.SOUTH, gui_Button_1);
         gui_Container_1.setScrollableY(true);
         gui_Container_1.setName("Container_1");
@@ -133,7 +133,7 @@ public class SignInForm extends com.codename1.ui.Form {
     }// </editor-fold>
 
 //-- DON'T EDIT ABOVE THIS LINE!!!
-    public void onButton_2ActionEvent(com.codename1.ui.events.ActionEvent ev) {
+    /*public void onButton_2ActionEvent(com.codename1.ui.events.ActionEvent ev) {
 		UtilisateurService us=new UtilisateurService();
 			us.LoggedUser(gui_Text_Field_2.getText(), gui_Text_Field_1.getText());
         //new InboxForm().show();
@@ -142,13 +142,13 @@ public class SignInForm extends com.codename1.ui.Form {
 				//FL.show();
 				new TrendingForm().show();
 			}
-    }
+    }*/
 	
 	public void onButton_1ActionEvent(com.codename1.ui.events.ActionEvent ev) {
         new SignUpForm().show();
     }
 	
-	public void onButton_3ActionEvent(com.codename1.ui.events.ActionEvent ev) {
+	public void onButton_2ActionEvent(com.codename1.ui.events.ActionEvent ev) {
 		System.out.println("test 1");
         new UserForm().show();
     }

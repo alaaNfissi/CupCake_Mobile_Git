@@ -78,4 +78,20 @@ public class LivraisonService {
 		System.out.println(l.toString());
 		return l;
 	}
+	
+	public void changerEtatLivraison(Commande c,int etat)
+	{
+		ConnectionRequest con = new ConnectionRequest();
+		con.setPost(true);
+		String Url = "http://localhost/CupCake_Web_VF-master/web/app_dev.php/api/changerEtatLivraison?id=" + c.getId_commande()+"&etat="+etat;
+		con.setUrl(Url);
+		System.out.println("tt");
+		con.addResponseListener((e) -> {
+			String str = new String(con.getResponseData());
+			//LivraisonService.l = getLivraison(str,c);
+			System.out.println(str);
+		});
+		NetworkManager.getInstance().addToQueueAndWait(con);
+		//System.out.println(l.toString());
+	}
 }

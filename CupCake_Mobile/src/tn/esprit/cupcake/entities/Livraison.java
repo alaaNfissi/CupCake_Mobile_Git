@@ -40,6 +40,7 @@ public class Livraison {
 			break;
 			case 2:
 			this.etatLivraison="La Commande est livrée";
+			break;
 			case 3:
 			this.etatLivraison="La Commande est annulée";
 			break;

@@ -32,7 +32,7 @@ import tn.esprit.cupcake.entities.Utilisateur;
  * @author Alaa
  */
 public class CommandeService {
-
+	public static Commande commande;
 	public ArrayList<Commande> ListCommandesPatisserie(String json){
 		ArrayList<Commande> listCommandes = new ArrayList<>();
 
