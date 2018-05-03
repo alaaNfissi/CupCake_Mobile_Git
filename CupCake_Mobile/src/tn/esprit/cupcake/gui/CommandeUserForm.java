@@ -290,6 +290,7 @@ public class CommandeUserForm extends BaseForm {
 				popupBody.setUIID("PopupBody");
 				popupBody.setEditable(false);
 				Button b=new Button("Annuler Commande");
+				b.setUIID("CalendarHourSelected");
 				b.addActionListener((l)->{
 				ls.changerEtatLivraison(listCommande,3);
 				new CommandeUserForm().show();

@@ -161,6 +161,7 @@ public class TrendingForm extends BaseForm {
         gui_imageContainer2.setName("imageContainer2");
         gui_Label_1_1_1.setUIID("Separator");
         gui_Label_1_1_1.setName("Label_1_1_1");
+		
     }// </editor-fold>
 
 //-- DON'T EDIT ABOVE THIS LINE!!!
