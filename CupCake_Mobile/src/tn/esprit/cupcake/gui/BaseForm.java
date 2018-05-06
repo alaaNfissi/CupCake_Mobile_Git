@@ -16,13 +16,13 @@
  * CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
  * OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
  */
-
 package tn.esprit.cupcake.gui;
 
 import com.codename1.components.ImageViewer;
 import com.codename1.components.ScaleImageLabel;
 import com.codename1.ui.Button;
 import com.codename1.ui.Container;
+import com.codename1.ui.Dialog;
 import com.codename1.ui.EncodedImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Image;
@@ -40,91 +40,133 @@ import tn.esprit.cupcake.services.UtilisateurService;
  * @author Shai Almog
  */
 public class BaseForm extends Form {
+
 	private EncodedImage encoded;
 	private URLImage uRLImage;
 	private ImageViewer imgv;
-    public void installSidemenu(Resources res) {
-        Image selection = res.getImage("selection-in-sidemenu.png");
-        
-        Image inboxImage = null;
-        if(isCurrentInbox()) inboxImage = selection;
 
-        Image trendingImage = null;
-        if(isCurrentTrending()) trendingImage = selection;
-        
-        Image calendarImage = null;
-        if(isCurrentCalendar()) calendarImage = selection;
-        
-        Image statsImage = null;
-        if(isCurrentStats()) statsImage = selection;
-        
-        Button inboxButton = new Button("Inbox", inboxImage);
-        inboxButton.setUIID("SideCommand");
-        inboxButton.getAllStyles().setPaddingBottom(0);
-        Container inbox = FlowLayout.encloseMiddle(inboxButton, 
-                new Label("18", "SideCommandNumber"));
-        inbox.setLeadComponent(inboxButton);
-        inbox.setUIID("SideCommand");
-        inboxButton.addActionListener(e -> new InboxForm().show());
-        getToolbar().addComponentToSideMenu(inbox);
-        
-        //getToolbar().addCommandToSideMenu("WalkthruForm", statsImage, e -> new WalkthruForm(res).show());
-        getToolbar().addCommandToSideMenu("Calendar", calendarImage, e -> new CalendarForm(res).show());
-        getToolbar().addCommandToSideMenu("Map", null, e -> {});
+	public void installSidemenu(Resources res) {
+		Image selection = res.getImage("selection-in-sidemenu.png");
+
+		Image inboxImage = null;
+		if (isCurrentInbox()) {
+			inboxImage = selection;
+		}
+
+		Image trendingImage = null;
+		if (isCurrentTrending()) {
+			trendingImage = selection;
+		}
+
+		Image calendarImage = null;
+		if (isCurrentCalendar()) {
+			calendarImage = selection;
+		}
+
+		Image statsImage = null;
+		if (isCurrentStats()) {
+			statsImage = selection;
+		}
+
+		Button inboxButton = new Button("Inbox", inboxImage);
+		inboxButton.setUIID("SideCommand");
+		inboxButton.getAllStyles().setPaddingBottom(0);
+		Container inbox = FlowLayout.encloseMiddle(inboxButton,
+				new Label("18", "SideCommandNumber"));
+		inbox.setLeadComponent(inboxButton);
+		inbox.setUIID("SideCommand");
+		inboxButton.addActionListener(e -> new InboxForm().show());
+		getToolbar().addComponentToSideMenu(inbox);
+
+		//getToolbar().addCommandToSideMenu("WalkthruForm", statsImage, e -> new WalkthruForm(res).show());
+		getToolbar().addCommandToSideMenu("Calendar", calendarImage, e -> new CalendarForm(res).show());
+		getToolbar().addCommandToSideMenu("Map", null, e -> {
+		});
 		System.out.println(UtilisateurService.user);
-		if(UtilisateurService.user.getRoles().equals("ROLE_PATISSIER"))
-		{
-			getToolbar().addCommandToSideMenu("My Space",null,e->new MySpaceForm(res).show());
+		if (UtilisateurService.user.getRoles().equals("ROLE_PATISSIER")) {
+			getToolbar().addCommandToSideMenu("My Space", null, e -> new MySpaceForm(res).show());
 		}
 		getToolbar().addCommandToSideMenu("Mes Commandes", null, e -> {
 			new CommandeUserForm().show();
-		}); 
-		    getToolbar().addCommandToSideMenu("Mon Panier", null, e -> {new PanierForm().show();});
-            getToolbar().addCommandToSideMenu("Trending", trendingImage, e -> new TrendingForm(res).show());
-            getToolbar().addCommandToSideMenu("Settings", null, e -> {});
-		    getToolbar().addCommandToSideMenu("Sign out", null, e -> {
-			UtilisateurService.user=null;
-			PatisserieService.patisserie=null;
-			UserForm form=new UserForm();
+		});
+		/*getToolbar().addCommandToSideMenu("Mon Panier Alaa", null, e -> {
+			new PanierForm().show();
+		});*/
+
+		getToolbar().addCommandToSideMenu("Mon Panier", null, e
+				-> {
+			AffichagePanier a = new AffichagePanier();
+
+			a.getF().show();
+		});
+		getToolbar().addCommandToSideMenu("RobotCupCake", trendingImage, e -> {
+			MyApplication2 map = new MyApplication2();
+			map.start();
+		});
+		getToolbar().addCommandToSideMenu("Produits", trendingImage, e -> {
+			//Affichage a = new Affichage();
+			HomeForm a = new HomeForm();
+			a.getF().show();
+		});
+		//getToolbar().addCommandToSideMenu("Trending", trendingImage, e -> new TrendingForm(res).show());
+		getToolbar().addCommandToSideMenu("Liste Des Patisseries", null, e -> new ListPatisseriesGui().show());
+		if (UtilisateurService.user.getRoles().equals("ROLE_PATISSIER")) {
+		getToolbar().addCommandToSideMenu("EvenementsPatissier", trendingImage, e -> new ListEvenementPatissierGui(res).show());
+		}
+		getToolbar().addCommandToSideMenu("Settings", null, e -> {
+		});
+		getToolbar().addCommandToSideMenu("ModifierProfil", trendingImage, e -> {
+            if (UtilisateurService.user.getRoles().equals("ROLE_PATISSIER")) {
+                if (Dialog.show("Confirm", "", "Compte", "Patisserie")) {
+                    System.out.println("Comtpe");
+                } else {
+                    new ModifierPatisserieGui(res).show();
+                    System.out.println("Patisserie");
+                }
+            } else {
+                //new ModifierProfilGui(res).show();
+            }
+        });
+		getToolbar().addCommandToSideMenu("Sign out", null, e -> {
+			UtilisateurService.user = null;
+			PatisserieService.patisserie = null;
+			UserForm form = new UserForm();
 			form.facebookLogout(form);
 			new SignInForm(res).show();
 		});
 
-        
-        // spacer
-        getToolbar().addComponentToSideMenu(new Label(" ", "SideCommand"));
+		// spacer
+		getToolbar().addComponentToSideMenu(new Label(" ", "SideCommand"));
 		/*encoded = EncodedImage.createFromImage(res.getImage(""), false);
 		uRLImage =URLImage.createToStorage(encoded,"test", UtilisateurService.user.getImage());
 		imgv= new ImageViewer(uRLImage);*/
-		/*EncodedImage placeholder = EncodedImage.createFromImage(Image.createImage(50, 50, 0xffff0000), true); 
+ /*EncodedImage placeholder = EncodedImage.createFromImage(Image.createImage(50, 50, 0xffff0000), true); 
                         URLImage background = URLImage.createToStorage(placeholder, "fbuser.jpg",UtilisateurService.user.getImage() );*/
-		EncodedImage placeholder = EncodedImage.createFromImage(Image.createImage(50, 50, 0xffff0000), true); 
-                        URLImage background = URLImage.createToStorage(placeholder, "fbuser.jpg",UtilisateurService.user.getImage()); 
-                        background.fetch(); 
-                        ScaleImageLabel myPic = new ScaleImageLabel(); 
-                        myPic.setIcon(background); 
-						ImageViewer img = new ImageViewer(background);
-                         
-                        
+		EncodedImage placeholder = EncodedImage.createFromImage(Image.createImage(50, 50, 0xffff0000), true);
+		URLImage background = URLImage.createToStorage(placeholder, "fbuser.jpg", UtilisateurService.user.getImage());
+		background.fetch();
+		ScaleImageLabel myPic = new ScaleImageLabel();
+		myPic.setIcon(background);
+		ImageViewer img = new ImageViewer(background);
+
 		getToolbar().addComponentToSideMenu(new Label(img.getImage(), "Container"));
-        getToolbar().addComponentToSideMenu(new Label(UtilisateurService.user.getNom()+" "+UtilisateurService.user.getPrenom(), "SideCommandNoPad"));
-        getToolbar().addComponentToSideMenu(new Label(UtilisateurService.user.getUsername()+" "+UtilisateurService.user.getDate_naissance(), "SideCommandSmall"));
-    }
+		getToolbar().addComponentToSideMenu(new Label(UtilisateurService.user.getNom() + " " + UtilisateurService.user.getPrenom(), "SideCommandNoPad"));
+		getToolbar().addComponentToSideMenu(new Label(UtilisateurService.user.getUsername(), "SideCommandSmall"));
+	}
 
-        
-    protected boolean isCurrentInbox() {
-        return false;
-    }
-    
-    protected boolean isCurrentTrending() {
-        return false;
-    }
+	protected boolean isCurrentInbox() {
+		return false;
+	}
 
-    protected boolean isCurrentCalendar() {
-        return false;
-    }
+	protected boolean isCurrentTrending() {
+		return false;
+	}
 
-    protected boolean isCurrentStats() {
-        return false;
-    }
+	protected boolean isCurrentCalendar() {
+		return false;
+	}
+
+	protected boolean isCurrentStats() {
+		return false;
+	}
 }

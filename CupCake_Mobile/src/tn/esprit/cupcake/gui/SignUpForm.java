@@ -10,6 +10,9 @@ import com.codename1.ui.*;
 import com.codename1.ui.Form;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.spinner.Picker;
+import java.util.Date;
+/*import java.util.regex.Matcher;
+import java.util.regex.Pattern;*/
 import tn.esprit.cupcake.entities.Client;
 //import tn.esprit.cupcake.entities.Patissier;
 //import sun.security.util.Password;
@@ -92,7 +95,9 @@ public class SignUpForm extends com.codename1.ui.Form {
 			}
 
 			if (sourceComponent == registerBtn) {
+				if (verif()) {
 				onButton_2ActionEvent(ev);
+				}
 			}
 
 		}
@@ -128,6 +133,7 @@ public class SignUpForm extends com.codename1.ui.Form {
 		gui_Component_Group_1.addComponent(dateNaissance);
 		gui_Component_Group_1.addComponent(adresse);
 		gui_Component_Group_1.addComponent(sexe_container);
+		image.setText("https://ucarecdn.com/4d708d52-215a-4b23-b55f-215d384ec518/");
 		gui_Component_Group_1.addComponent(image);
 		gui_Component_Group_1.addComponent(roles_container);
 		username.setHint("Username");
@@ -159,35 +165,44 @@ public class SignUpForm extends com.codename1.ui.Form {
 
 //-- DON'T EDIT ABOVE THIS LINE!!!
 	public void onButton_2ActionEvent(com.codename1.ui.events.ActionEvent ev) {
-		UtilisateurService us = new UtilisateurService();
-		Client c = new Client();
-		c.setUsername(username.getText());
-		c.setEmail(email.getText());
-		c.setPassword(password.getText());
-		c.setNum_tel(nTel.getAsInt(BASELINE));
-		c.setNom(nom.getText());
-		c.setPrenom(prenom.getText());
-		c.setDate_naissance(dateNaissance.getDate());
-		c.setAdresse(adresse.getText());
-		if (sexeGrp.getSelectedIndex() == 0) {
-			c.setSexe("homme");
-		} else if (sexeGrp.getSelectedIndex() == 1) {
-			c.setSexe("femme");
+			UtilisateurService us = new UtilisateurService();
+			Client c = new Client();
+			c.setUsername(username.getText());
+			c.setEmail(email.getText());
+			c.setPassword(password.getText());
+			c.setNum_tel(nTel.getAsInt(BASELINE));
+			c.setNom(nom.getText());
+			c.setPrenom(prenom.getText());
+			c.setDate_naissance(dateNaissance.getDate());
+			c.setAdresse(adresse.getText());
+			if (sexeGrp.getSelectedIndex() == 0) {
+				c.setSexe("homme");
+			} else if (sexeGrp.getSelectedIndex() == 1) {
+				c.setSexe("femme");
+			}
+			
+			c.setImage(image.getText());
+			//c.setRoles(roles);
+			if (rolesGrp.getSelectedIndex() == 0) {
+				c.setRoles("ROLE_CLIENT");
+			} else if (rolesGrp.getSelectedIndex() == 1) {
+				c.setRoles("ROLE_PATISSIER");
+			}
+			System.out.println(c.toString());
+			us.addUser(c);
+			if (UtilisateurService.user != null && UtilisateurService.user.getRoles().equals("ROLE_PATISSIER")) {
+				new CreatePatisserieForm().show();
+			} else if (UtilisateurService.user != null && UtilisateurService.user.getRoles().equals("ROLE_CLIENT")) {
+				new ListPatisseriesGui().show();
+			}
+	}
+
+	public boolean verif() {
+		if (email.getText() == "" || username.getText() == "" || password.getText() == "" || nTel.getText() == "" || nom.getText() == "" || prenom.getText() == "" || dateNaissance.getDate() == null || adresse.getText() == "" || (!sexeGrp.isSelected()) || image.getText() == "" || (!rolesGrp.isSelected())) {
+			Dialog.show("Attention", "SVP ! Vérifiez vos Données .", "Ok", "");
+			return false;
 		}
-		c.setImage(image.getText());
-		//c.setRoles(roles);
-		if (rolesGrp.getSelectedIndex() == 0) {
-			c.setRoles("ROLE_CLIENT");
-		} else if (rolesGrp.getSelectedIndex() == 1) {
-			c.setRoles("ROLE_PATISSIER");
-		}
-		System.out.println(c.toString());
-		us.addUser(c);
-		if (UtilisateurService.user != null && UtilisateurService.user.getRoles().equals("ROLE_PATISSIER")) {
-			new CreatePatisserieForm().show();
-		} else if (UtilisateurService.user != null && UtilisateurService.user.getRoles().equals("ROLE_CLIENT")) {
-			new TrendingForm().show();
-		}
+		return true;
 	}
 
 }

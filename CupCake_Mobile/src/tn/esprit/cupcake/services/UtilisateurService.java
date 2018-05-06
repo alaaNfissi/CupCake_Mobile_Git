@@ -49,6 +49,7 @@ public class UtilisateurService {
 				//e.setId(Integer.parseInt(obj.get("id").toString().trim()));
 				u.setNom(utilisateurs.get("nom").toString());
 				u.setPrenom(utilisateurs.get("prenom").toString());
+				u.setAdresse(utilisateurs.get("adresse").toString());
 				u.setNum_tel(0);
 				//Integer.parseInt(utilisateurs.get("numTel").toString().trim())
 				//SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");

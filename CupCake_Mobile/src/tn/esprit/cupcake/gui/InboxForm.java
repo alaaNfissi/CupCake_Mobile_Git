@@ -234,7 +234,7 @@ public class InboxForm extends BaseForm {
         gui_Container_3.addComponent(gui_Label_3);
         gui_Container_3.addComponent(gui_Label_2);
         gui_Container_3.addComponent(gui_Text_Area_1);
-        gui_Label_3.setText("Sheldon Murphy");
+        gui_Label_3.setText("Reclamation");
         gui_Label_3.setName("Label_3");
         gui_Label_2.setText("Design Updates");
         gui_Label_2.setUIID("RedLabel");
@@ -267,9 +267,9 @@ public class InboxForm extends BaseForm {
         gui_Container_3_1.addComponent(gui_Label_3_1);
         gui_Container_3_1.addComponent(gui_Label_2_1);
         gui_Container_3_1.addComponent(gui_Text_Area_1_1);
-        gui_Label_3_1.setText("Massdrop");
+        gui_Label_3_1.setText("Messages");
         gui_Label_3_1.setName("Label_3_1");
-        gui_Label_2_1.setText("We Are Just Getting Started");
+        gui_Label_2_1.setText("Alaa Nfissi");
         gui_Label_2_1.setUIID("RedLabel");
         gui_Label_2_1.setName("Label_2_1");
         gui_Text_Area_1_1.setText("Tenkara Rod Co Teton Package Made possible by the Ultralight community...");
@@ -300,7 +300,7 @@ public class InboxForm extends BaseForm {
         gui_Container_3_2.addComponent(gui_Label_3_2);
         gui_Container_3_2.addComponent(gui_Label_2_2);
         gui_Container_3_2.addComponent(gui_Text_Area_1_2);
-        gui_Label_3_2.setText("Product Hunt");
+        gui_Label_3_2.setText("Simples Questions");
         gui_Label_3_2.setName("Label_3_2");
         gui_Label_2_2.setText("Our favorite GIF apps");
         gui_Label_2_2.setUIID("RedLabel");
@@ -333,7 +333,7 @@ public class InboxForm extends BaseForm {
         gui_Container_3_3.addComponent(gui_Label_3_3);
         gui_Container_3_3.addComponent(gui_Label_2_3);
         gui_Container_3_3.addComponent(gui_Text_Area_1_3);
-        gui_Label_3_3.setText("MightyDeals");
+        gui_Label_3_3.setText("Reclamation");
         gui_Label_3_3.setName("Label_3_3");
         gui_Label_2_3.setText("Vintage Design: 600+ Retro Vector Illustrations and Objects");
         gui_Label_2_3.setUIID("RedLabel");
@@ -366,7 +366,7 @@ public class InboxForm extends BaseForm {
         gui_Container_3_4.addComponent(gui_Label_3_4);
         gui_Container_3_4.addComponent(gui_Label_2_4);
         gui_Container_3_4.addComponent(gui_Text_Area_1_4);
-        gui_Label_3_4.setText("Twitter");
+        gui_Label_3_4.setText("Message");
         gui_Label_3_4.setName("Label_3_4");
         gui_Label_2_4.setText("Popular tweets this week");
         gui_Label_2_4.setUIID("RedLabel");

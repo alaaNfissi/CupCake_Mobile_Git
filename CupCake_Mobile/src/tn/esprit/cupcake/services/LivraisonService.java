@@ -10,6 +10,7 @@ import com.codename1.io.ConnectionRequest;
 import com.codename1.io.JSONParser;
 import com.codename1.io.NetworkManager;
 import java.io.IOException;
+import java.util.Date;
 import java.util.Map;
 import tn.esprit.cupcake.entities.Commande;
 import tn.esprit.cupcake.entities.Livraison;
@@ -93,5 +94,17 @@ public class LivraisonService {
 		});
 		NetworkManager.getInstance().addToQueueAndWait(con);
 		//System.out.println(l.toString());
+	}
+	
+	public void ajouterLivraison(int idCommande,float prix,Date dateLivraison,int etatLivraison)
+	{
+		ConnectionRequest con = new ConnectionRequest();
+        String Url = "http://localhost/CupCake_Web_VF-master/web/app_dev.php/api/ajouterLivraison?id_commande="+idCommande+"&prix_livraison="+prix+"&date_livraison="+dateLivraison+"&etat_livraison="+etatLivraison;
+        con.setUrl(Url);
+        con.addResponseListener((e) -> {
+            String str = new String(con.getResponseData());
+            System.out.println(str);
+        });
+        NetworkManager.getInstance().addToQueueAndWait(con);
 	}
 }

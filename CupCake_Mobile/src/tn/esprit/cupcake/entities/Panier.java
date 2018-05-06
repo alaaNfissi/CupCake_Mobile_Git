@@ -27,6 +27,15 @@ public class Panier {
         this.id_produit = id_produit;
     }
 	
+     public Panier(long id_utilisateur, int id_produit) {
+        this.id_utilisateur = id_utilisateur;
+        this.id_produit = id_produit;
+    }
+
+    public Panier(long id_utilisateur) {
+        this.id_utilisateur = id_utilisateur;
+    }
+     
 	public Panier(int id_panier, int id_patisserie, long id_utilisateur, int quantite_panier_produit, int id_produit) {
         this.id_panier = id_panier;
         this.id_patisserie = id_patisserie;

@@ -21,6 +21,8 @@ import com.codename1.social.LoginCallback;
 import com.codename1.ui.Button;
 import com.codename1.ui.Component;
 import com.codename1.ui.Container;
+import com.codename1.ui.Dialog;
+import com.codename1.ui.Display;
 import com.codename1.ui.EncodedImage;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
@@ -98,13 +100,17 @@ public class UserForm extends com.codename1.ui.Form {
 				onButton_1ActionEvent(ev);
 			}
 			if (sourceComponent == gui_Button_2) {
-				onButton_2ActionEvent(ev);
+				if (verif()) {
+					onButton_2ActionEvent(ev);
+				}
 			}
 			if (sourceComponent == gui_Button_4) {
 				onButton_3ActionEvent(ev);
 			}
 			if (sourceComponent == gui_Button_3) {
-				onButton_4ActionEvent(ev);
+				if (verifMail()) {
+					onButton_4ActionEvent(ev);
+				}
 			}
 		}
 
@@ -292,7 +298,7 @@ public class UserForm extends com.codename1.ui.Form {
 					myPic.setIcon(background);
 					gui_Label_1.setText("User Connected, Click to get in ");
 					gui_Label_1.addPointerPressedListener((e) -> {
-						new TrendingForm().show();
+						new ListPatisseriesGui().show();
 					});
 					//form.add(myPic);
 					//form.add(buttonLogout);
@@ -399,7 +405,7 @@ public class UserForm extends com.codename1.ui.Form {
 		if (UtilisateurService.user != null) {
 			//Form FL=new Form(UtilisateurService.user.getUsername());
 			//FL.show();
-			new TrendingForm().show();
+			new ListPatisseriesGui().show();
 		}
 	}
 
@@ -413,15 +419,16 @@ public class UserForm extends com.codename1.ui.Form {
 	}
 
 	public void onButton_4ActionEvent(com.codename1.ui.events.ActionEvent ev) {
-		Message m = new Message("<html><body>Check out <a href=\"https://www.codenameone.com/\">Codename One</a></body></html>");
-		m.setMimeType(Message.MIME_HTML);
+		/*Message m = new Message("<html><body>Check out <a href=\"https://www.codenameone.com/\">Codename One</a></body></html>");
+		m.setMimeType(Message.MIME_HTML);*/
 		System.out.println("tessst");
-	
+
 // notice that we provide a plain text alternative as well in the send method
-		
-		boolean success = m.sendMessageViaCloudSync("Codename One", "alaa.nfissi@esprit.tn", "Name Of User", "Message Subject",
+		/*boolean success = m.sendMessageViaCloudSync("Codename One", "alaa.nfissi@esprit.tn", "Name Of User", "Message Subject",
 				"Check out Codename One at https://www.codenameone.com/");
-		System.out.println("tessst 1");
+		System.out.println("tessst 1");*/
+		Message m = new Message("You are notified");
+        Display.getInstance().sendMessage(new String[] {gui_Text_Field_2.getText()}, "subject", m);
 	}
 
 	private Component showShare() {
@@ -442,5 +449,20 @@ public class UserForm extends com.codename1.ui.Form {
 		cnt.addComponent(BorderLayout.SOUTH, share);
 		c.addComponent(BorderLayout.EAST, cnt);
 		return c;
+	}
+
+	private boolean verif() {
+		if (gui_Text_Field_2.getText() == "" || gui_Text_Field_1.getText() == "") {
+			Dialog.show("Attention", "Remplissez les Champs !", "Ok", "");
+			return false;
+		}
+		return true;
+	}
+		private boolean verifMail() {
+		if (gui_Text_Field_2.getText() == "") {
+			Dialog.show("Attention", "Remplissez votre mail !", "Ok", "");
+			return false;
+		}
+		return true;
 	}
 }

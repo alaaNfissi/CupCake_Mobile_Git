@@ -48,6 +48,7 @@
     <image name="GroupElementOnly.borderTop_1.png" type="multi"  />
     <image name="GroupElementOnly.borderTopL_1.png" type="multi"  />
     <image name="GroupElementOnly.borderTopR_1.png" type="multi"  />
+    <image name="high.png"  />
     <l10n name="l1">
         <lang name="en">
             <entry key="menu" value="Menu" />
@@ -68,8 +69,13 @@
     <image name="label_round.png" type="multi"  />
     <image name="learn-codename-one.jpg"  />
     <image name="logo.png" type="multi"  />
+    <image name="master.png"  />
+    <image name="medium.png"  />
+    <image name="paypal.png"  />
     <image name="profile_image.png" type="multi"  />
     <image name="progress.png" type="multi"  />
+    <image name="robotchef2.png"  />
+    <image name="round.png"  />
     <image name="selection-in-sidemenu.png" type="multi"  />
     <image name="sidemenu-background.jpg"  />
     <image name="skate-park.jpg"  />
@@ -593,6 +599,7 @@
         <val key="transparency" value="0" />
     </theme>
     <image name="toolbar-profile-pic.png" type="multi"  />
+    <image name="visa.png"  />
     <image name="walthru-radio-selected.png" type="multi"  />
     <image name="walthru-radio-unselected.png" type="multi"  />
     <image name="welcome-background.jpg"  />

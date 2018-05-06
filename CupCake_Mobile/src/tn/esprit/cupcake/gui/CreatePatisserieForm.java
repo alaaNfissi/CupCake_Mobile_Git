@@ -17,7 +17,7 @@ import tn.esprit.cupcake.services.PatisserieService;
 import tn.esprit.cupcake.services.UtilisateurService;
 
 /**
- * 
+ *
  * @author Alaa
  */
 public class CreatePatisserieForm extends com.codename1.ui.Form {
@@ -42,7 +42,7 @@ public class CreatePatisserieForm extends com.codename1.ui.Form {
 	private Container roles_container = new Container(new BoxLayout(BoxLayout.X_AXIS));
 	private Label gui_Label_1 = new com.codename1.ui.Label();
 	private ComponentGroup gui_Component_Group_1 = new com.codename1.ui.ComponentGroup();
-	
+
 	private TextField libelle_patisserie = new TextField();
 	//private TextField email = new TextField();
 	private TextField adresse_patisserie = new TextField();
@@ -79,7 +79,9 @@ public class CreatePatisserieForm extends com.codename1.ui.Form {
 			}
 
 			if (sourceComponent == createBtn) {
-				onButton_2ActionEvent(ev);
+				if (verif()) {
+					onButton_2ActionEvent(ev);
+				}
 			}
 
 		}
@@ -109,6 +111,7 @@ public class CreatePatisserieForm extends com.codename1.ui.Form {
 		gui_Component_Group_1.addComponent(compte_facebook);
 		gui_Component_Group_1.addComponent(compte_instagram);
 		gui_Component_Group_1.addComponent(description);
+		image.setText("file://C:/Users/Alaa/AppData/Local/Temp/temp4434951594967509399..jpg");
 		gui_Component_Group_1.addComponent(image);
 		libelle_patisserie.setHint("Libelle Patisserie");
 		adresse_patisserie.setHint("Adresse");
@@ -131,8 +134,8 @@ public class CreatePatisserieForm extends com.codename1.ui.Form {
 
 //-- DON'T EDIT ABOVE THIS LINE!!!
 	public void onButton_2ActionEvent(com.codename1.ui.events.ActionEvent ev) {
-		PatisserieService ps= new PatisserieService();
-		Patisserie p=new Patisserie();
+		PatisserieService ps = new PatisserieService();
+		Patisserie p = new Patisserie();
 		p.setLibelle_patisserie(libelle_patisserie.getText());
 		p.setAdresse_patisserie(adresse_patisserie.getText());
 		p.setDate_creation(date_creation.getDate());
@@ -150,5 +153,13 @@ public class CreatePatisserieForm extends com.codename1.ui.Form {
 		}
 	}
 
+	  private boolean verif() {
+        if ((libelle_patisserie.getText() == "") || (adresse_patisserie.getText() == "")
+                || (specialite.getText() == "") || (compte_facebook.getText() == "")
+                || (compte_instagram.getText() == "") || (description.getText() == "")) {
+            Dialog.show("Attention", "Verifier vos données !", "Ok", "");
+            return false;
+        }
+        return true;
+    }
 }
-

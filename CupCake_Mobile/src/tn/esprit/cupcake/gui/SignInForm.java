@@ -18,6 +18,7 @@
  */
 package tn.esprit.cupcake.gui;
 
+import com.codename1.ui.Dialog;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import tn.esprit.cupcake.services.UtilisateurService;
@@ -152,5 +153,4 @@ public class SignInForm extends com.codename1.ui.Form {
 		System.out.println("test 1");
         new UserForm().show();
     }
-	
 }

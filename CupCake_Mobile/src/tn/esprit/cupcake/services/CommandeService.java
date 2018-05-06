@@ -17,6 +17,7 @@ import java.io.IOException;
 /*import java.text.ParseException;
 import java.text.SimpleDateFormat;*/
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 //import java.util.Locale;
 import java.util.Map;
@@ -32,8 +33,10 @@ import tn.esprit.cupcake.entities.Utilisateur;
  * @author Alaa
  */
 public class CommandeService {
+
 	public static Commande commande;
-	public ArrayList<Commande> ListCommandesPatisserie(String json){
+
+	public ArrayList<Commande> ListCommandesPatisserie(String json) {
 		ArrayList<Commande> listCommandes = new ArrayList<>();
 
 		try {
@@ -51,11 +54,21 @@ public class CommandeService {
 				System.out.println(id);
 
 				c.setId_commande((int) id);
-				c.setNum_commande(Integer.parseInt(obj.get("numCommande").toString().trim()));
+				float numCommande = Float.parseFloat(obj.get("numCommande").toString());
+				c.setNum_commande((int) numCommande);
 				c.setPrix_totale(Float.parseFloat(obj.get("prixTotale").toString()));
-				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-				String date = obj.get("dateCommande").toString();
-				c.setDate_commande(formatter.parse(date));
+
+				if (obj.get("dateCommande").getClass() != String.class) {
+					Map<String, Object> results = (Map<String, Object>) obj.get("dateCommande");
+					Double dateCommande = (Double) results.get("timestamp");
+					Date dateCommande2 = new Date((long) (dateCommande * 1000));
+					c.setDate_commande(dateCommande2);
+				} else {
+					SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+					String date = obj.get("dateCommande").toString();
+					c.setDate_commande(formatter.parse(date));
+				}
+
 				//c.setDate_commande(null);
 				c.setId_panier(0);
 				c.setLibelle_patisserie(null);
@@ -87,16 +100,29 @@ public class CommandeService {
 		NetworkManager.getInstance().addToQueueAndWait(con);
 		return listCommandes;
 	}
-	
-	public ArrayList<Commande> getListCommandeUser(Utilisateur  u) {
+
+	public ArrayList<Commande> getListCommandeUser(Utilisateur u) {
 		ConnectionRequest con = new ConnectionRequest();
-		con.setUrl("http://localhost/CupCake_Web_VF-master/web/app_dev.php/api/getCommandeUser?idU=" +u.getId());
+		con.setUrl("http://localhost/CupCake_Web_VF-master/web/app_dev.php/api/getCommandeUser?idU=" + u.getId());
 		con.addResponseListener(new ActionListener<NetworkEvent>() {
 			@Override
 			public void actionPerformed(NetworkEvent evt) {
 				CommandeService cs = new CommandeService();
 				listCommandes = cs.ListCommandesPatisserie(new String(con.getResponseData()));
 			}
+		});
+		NetworkManager.getInstance().addToQueueAndWait(con);
+		return listCommandes;
+	}
+
+	public ArrayList<Commande> PasserCommande(int idPanier, float prixT) {
+		ConnectionRequest con = new ConnectionRequest();
+		String Url = "http://localhost/CupCake_Web_VF-master/web/app_dev.php/api/createCommande?panier=" + idPanier + "&prixT=" + prixT;
+		con.setUrl(Url);
+		con.addResponseListener((e) -> {
+			String str = new String(con.getResponseData());
+			listCommandes = ListCommandesPatisserie(str);
+			System.out.println(str);
 		});
 		NetworkManager.getInstance().addToQueueAndWait(con);
 		return listCommandes;
